@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="page-header">
+        <h1>Post Detail</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render 'profile' %>
+
+    <div class="col-md-8">
+      <div class="alert-link">
+        <h3><%= link_to 'Back to Posts', posts_path, style: 'color: blue;' %></h3>
+      </div>
+      <article>
+        <h1><%= @post.title %></h1>
+        <div class="lead">
+          <%= @post.content.html_safe %>
+        </div>
+      </article>
+
+      <br>
+      <hr>
+
+      <div id="comments">
+        <% if @post.comments.present? %>
+          <h2>Comments</h2>
+        <% end %>
+        <div class="row">
+          <% @post.comments.approved.each.with_index(1) do |comment, index| %>
+            <div class="col-md-11">
+              <h5 style="margin-bottom: 0;">
+                <%= comment.message %>
+              </h5>
+              <h6 style="padding-top: 0;">
+                <small><b><%= comment.visitor.full_name %></b> Commented on: <%= time_ago(comment.created_at) %></small>
+              </h6>
+              <hr>
+            </div>
+            <div class="col-md-1 comment-num"><%= double_digit_number(index) %></div>
+          <% end %>
+        </div>
+
+        <%= form_for @visitor_comment, url: comments_url do |f| %>
+          <% if session[:visitor_errors] %>
+            <div id="error_explanation">
+              <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being
+                saved: </h2>
+              <h2>Complete the below form for comment to be saved: </h2>
+              <ul>
+                <% session[:visitor_errors].each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <h3 style="padding: 3%;">Have your say (Mention Your Comment)</h3>
+
+          <p>
+            <%= f.label :full_name, class: 'sr-only' %>
+            <%= f.text_field :full_name, class: 'form-control', placeholder: 'Full Name' %>
+          </p>
+
+          <p>
+            <%= f.label :email, class: 'sr-only' %>
+            <%= f.text_field :email, class: 'form-control', placeholder: 'Email Address' %>
+          </p>
+
+          <%= f.fields_for :comments do |c| %>
+            <p>
+              <%= c.label :message, class: 'sr-only' %>
+              <%= c.text_area :message, class: 'form-control', placeholder: 'Message' %>
+              <%= c.hidden_field :post_id, value: @post.id %>
+            </p>
+          <% end %>
+
+          <p><%= f.submit 'Add Comment', class: 'btn btn-primary' %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

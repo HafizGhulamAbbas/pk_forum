@@ -1,0 +1,45 @@
+@import "bootstrap";
+@import "header";
+@import "footer";
+//@import "jquery-ui/autocomplete";
+
+
+@font-face {
+    font-family: 'Quicksand-Bold';
+    font-weight: normal;
+    font-style: normal;
+    src: font_url('Quicksand-Bold.ttf') format('opentype');
+
+}@font-face {
+    font-family: 'Quicksand-Reg';
+    font-weight: normal;
+    font-style: normal;
+    src: font_url('Quicksand-Regular.ttf') format('opentype');
+}
+
+*{
+    font-family: Quicksand-Reg;
+}
+
+h1, h2, h3, h4, h5, h6, p, a{
+    color: #000000;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #8c9ba5;
+}
+
+.indent {
+    text-indent: 10%;
+}
+
+.indent-except-first > li:not(:first-child) {
+    text-indent: 10%;
+}
+
+.one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

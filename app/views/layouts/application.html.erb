@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>PkForum</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <!--  <link rel="icon" href="<%#= image_path('favicon.png') %>" type="image/png">-->
+  <title>Pakistan's Forum</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag "#{params[:controller]}", media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag "#{params[:controller]}", media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+<%= render 'shared/header' %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success" style="padding-top: 4em;"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-info" style="padding-top: 4em;"><%= flash[:alert] %></div>
+<% end %>
+
+
+<div class="main-container">
+  <%= yield %>
+</div>
+
+<%= render 'shared/footer' %>
+</body>
 </html>
+

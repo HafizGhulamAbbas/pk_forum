@@ -1,0 +1,9 @@
+<% if resource.errors.any? %>
+  <div class="field">
+    <div class="col-md-12 pull-right">
+      <ul>
+        <li style="color: red"><%= resource.errors.full_messages.first %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

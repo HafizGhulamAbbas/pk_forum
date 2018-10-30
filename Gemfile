@@ -66,3 +66,10 @@ gem 'devise'
 
 # Editor
 gem 'activeadmin_quill_editor'
+
+# For Designing
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+
+# Paginator
+gem 'kaminari', '~> 1.1', '>= 1.1.1'

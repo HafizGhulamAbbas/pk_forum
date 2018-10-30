@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.231 25.231">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #767676;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="facebook" transform="translate(3412 -7012)">
+    <path id="Path_1022" data-name="Path 1022" class="cls-1" d="M25.231,12.616A12.616,12.616,0,1,0,12.616,25.231,12.616,12.616,0,0,0,25.231,12.616Zm-24.084,0A11.469,11.469,0,1,1,12.616,24.084,11.468,11.468,0,0,1,1.147,12.616Z" transform="translate(-3412 7012)"/>
+    <rect id="rectangle-16" class="cls-1" width="19.338" height="19.338" rx="9.669" transform="translate(-3409 7015)"/>
+    <path id="Path_1023" data-name="Path 1023" class="cls-2" d="M226.371,139.42v-4.788h1.58l.25-1.587h-1.83v-.8c0-.414.136-.809.73-.809h1.188v-1.584H226.6c-1.418,0-1.8.934-1.8,2.228v.96h-.973v1.588h.973v4.788Z" transform="translate(-3625.325 6890.144)"/>
+  </g>
+</svg>

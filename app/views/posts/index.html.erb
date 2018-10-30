@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Posts</h1>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 5%;">
+  <div class="row">
+    <%= render 'profile' %>
+
+    <div class="col-md-8">
+      <% @posts.each do |post| %>
+        <article>
+          <header><h2><%= truncate(post.title.titleize, length: 70, separator: ' ') %></h2></header>
+          <h6 style="margin-bottom: 4%;">Posted <%= time_ago(post.created_at) %></h6>
+
+          <div class="lead">
+            <%#= truncate(post.content.html_safe, length: 104, separator: ' ') { link_to 'Read More', post_path(post, :format => :pdf) } %>
+            <%= truncate(post.content.html_safe, length: 104, separator: ' ') {link_to 'Read More', post_path(post, :format => :html), style: 'color: blue;'} %>
+          </div>
+
+          <% if Setting.tag_visibile? && post.tags.present? %>
+            <footer>
+              <p>
+                <b>Tags: </b>
+                <% post.tags.each do |tag| %>
+                  <span class="tag"><%= link_to tag.name, posts_path(tag: tag.name) %></span>
+                <% end %>
+              </p>
+            </footer>
+          <% end %>
+          <hr style="margin-bottom: 5%; margin-top: 5%;">
+        </article>
+      <% end %>
+
+      <nav>
+        <ul class="pagination">
+          <li>
+            <%= paginate @posts, window: 0 %>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</div>
