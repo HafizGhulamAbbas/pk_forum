@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
 
-  def index; end
+  def index
+    @posts = Post.published.first(8)
+  end
 
-  def welcom; end
+  def welcome; end
 
 end
