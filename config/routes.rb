@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'home#index'
+  root to: 'posts#index'
 
   resources :posts do
     collection do
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :home
   # resources :settings, only: %i[new create edit update]
   # resources :dashboard, only: [:index]
   # resources :notifications, only: %i[index destroy]

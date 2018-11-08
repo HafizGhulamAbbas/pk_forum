@@ -1,16 +1,9 @@
 <div class="container">
-  <div class="page-header">
-        <h1>Post Detail</h1>
-  </div>
-</div>
-
-<div class="container">
   <div class="row">
-    <%= render 'profile' %>
 
-    <div class="col-md-8">
+    <div class="col-md-8" style="margin-top: 5%">
       <div class="alert-link">
-        <h3><%= link_to 'Back to Posts', posts_path, style: 'color: blue;' %></h3>
+        <h3><%= link_to 'Back to Posts', posts_path, style: 'color: #16A085;' %></h3><br>
       </div>
       <article>
         <h1><%= @post.title %></h1>
@@ -75,9 +68,30 @@
             </p>
           <% end %>
 
-          <p><%= f.submit 'Add Comment', class: 'btn btn-primary' %></p>
+          <p><%= f.submit 'Add Comment', class: 'btn btn-warning' %></p>
         <% end %>
       </div>
     </div>
+
+    <div class="col-md-4">
+      <section id="blog-section">
+        <div class="container">
+          <div class="">
+
+
+            <%= render 'recent_posts' %>
+          </div>
+        </div>
+
+      </section>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+

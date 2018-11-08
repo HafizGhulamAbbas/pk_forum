@@ -1,0 +1,97 @@
+<!--           // RECENT POST===========-->
+<div class="<%= params[:action] == 'index' ? 'col-lg-4' : '' %>">
+  <div class="widget-sidebar">
+    <h2 class="title-widget-sidebar">RECENT POST</h2>
+    <div class="content-widget-sidebar">
+      <ul>
+        <% 4.times do %>
+          <li class="recent-post">
+            <div class="post-img">
+              <img src="https://lh3.googleusercontent.com/-ndZJOGgvYQ4/WM1ZI8dH86I/AAAAAAAADeo/l67ZqZnRUO8QXIQi38bEXuxqHfVX0TV2gCJoC/w424-h318-n-rw/thumbnail8.jpg" class="img-responsive">
+            </div>
+            <a href="#"><h5>Excepteur sint occaecat cupi non proident laborum.</h5></a>
+            <p>
+              <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
+            </p>
+          </li>
+          <hr>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="widget-sidebar">
+    <h2 class="title-widget-sidebar">ARCHIVES</h2>
+    <% 4.times do %>
+      <div class="last-post">
+        <button class="accordion">21/4/2016</button>
+        <div class="panel">
+          <li class="recent-post">
+            <div class="post-img">
+              <img src="https://lh3.googleusercontent.com/-13DR8P0-AN4/WM1ZIz1lRNI/AAAAAAAADeo/XMfJ7CM-pQg9qfRuCgSnphzqhaj3SQg6QCJoC/w424-h318-n-rw/thumbnail4.jpg" class="img-responsive">
+            </div>
+            <a href="#"><h6>Excepteur sint occaecat cupi non proident laborum.</h6></a>
+            <p>
+              <small><i class="fa fa-calendar" data-original-title="" title=""></i> 30 Juni 2014</small>
+            </p>
+          </li>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+            et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip
+            ex ea commodo consequat.</p>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+
+  </div>
+
+  <!--=====================
+         CATEGORIES
+    ======================-->
+  <div class="widget-sidebar">
+    <h2 class="title-widget-sidebar">CATEGORIES</h2>
+    <button class="categories-btn">Audio</button>
+    <button class="categories-btn">Blog</button>
+    <button class="categories-btn">Gallery</button>
+    <button class="categories-btn">Images</button>
+  </div>
+
+  <!--=====================
+        NEWSLATTER
+ ======================-->
+  <div class="widget-sidebar">
+    <h2 class="title-widget-sidebar">NEWSLATTER</h2>
+    <p>Subscribe to our email newsletter for useful tips and valuable resources, sent out every second Monady.</p>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+    </div>
+    <button type="button" class="btn btn-warning">Subscribe</button>
+  </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    }
+</script>
