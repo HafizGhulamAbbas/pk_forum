@@ -73,3 +73,8 @@ gem 'jquery-rails'
 
 # Paginator
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+
+# For registration via 3rd party
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'

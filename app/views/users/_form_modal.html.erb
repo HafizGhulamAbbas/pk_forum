@@ -1,0 +1,55 @@
+<!-- Register Modal -->
+<div class="modal fade" id="newUserModal">
+  <div class="modal-dialog modal-dialog-centered modal-full">
+    <div class="modal-content modal-content-style">
+
+      <!-- Modal Header -->
+      <div class="modal-header modal-header-style">
+        <h4 class="modal-title"></h4>
+        <%= image_tag(image_path('nav_cross_button.svg'), style: 'width: 1em;', 'data-dismiss': 'modal') %>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body pt-0">
+        <div class="row">
+          <%= render partial: 'shared/resource_errors' %>
+        </div>
+
+        <div class="promo-div">
+          <h5 style="color: white">Why you need signup?</h5>
+          <p style="color: white">PK Forum will notify you about your subscribed news, jobs and many other stuff that
+            would you like to have in front of your eyes.</p>
+        </div>
+
+        <%= render 'users/form', user: user %>
+
+        <div style="text-align: center">
+          <h6 style="padding-top: 2em; font-size: 13px; color: white">or Connect With</h6>
+        </div>
+      </div>
+
+      <!--Modal footer-->
+      <div class="modal-footer">
+        <div style="text-align: center; width: 100%;">
+          <ul class="list-unstyled list-inline">
+            <li class="list-inline-item">
+              <a class="social-register" href="<%= user_facebook_omniauth_authorize_path %>">
+                <%= image_tag('fb_register.svg') %>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="social-register" href="<%= user_twitter_omniauth_authorize_path %>">
+                <%= image_tag('twitter_register.svg') %>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="social-register" href="<%= user_google_oauth2_omniauth_authorize_path %>">
+                <%= image_tag('google_register.svg') %>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

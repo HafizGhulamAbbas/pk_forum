@@ -12,6 +12,6 @@ Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts
 # application.js, application.scss, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-%w[home posts].each do |controller|
+%w[home posts users].each do |controller|
   Rails.application.config.assets.precompile += %W[#{controller}.js #{controller}.css]
 end

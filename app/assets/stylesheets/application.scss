@@ -24,6 +24,7 @@
 
 h1, h2, h3, h4, h5, h6, p, a {
   color: #000000;
+  outline: none;
 }
 
 a:hover {
@@ -47,4 +48,97 @@ a:hover {
 
 body {
   background-color: #ECF0F1;
+}
+
+
+
+
+
+
+
+//User Register Modal
+.modal-body{
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.promo-div{
+  background-color: #434343;
+  border-radius: 5px;
+  padding: 1.5em;
+  text-align: center;
+}
+@media (max-width: 667px){
+  .promo-div{
+    font-size: 12px !important;
+    padding: 1.25em;
+  }
+}
+
+.submit-button{
+  width: 100%;
+  background: #434343;
+  color: #ffffff;
+  //border: solid thin #e54848;
+}
+
+.field-style{
+  background: #434343;
+  color: #ffffff;
+  border: solid thin #707070;
+}
+.field-style:focus{
+  background: #434343;
+  color: #ffffff;
+  border: solid thin #707070;
+}
+.field-style::placeholder{
+  color: #ffffff;
+  font-size: 11px;
+}
+
+form{
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+input{
+  box-shadow: none !important;
+}
+input:after{
+  background: #333333;
+}
+
+.list-inline-item{
+  .social-register img{
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+.list-inline-item{
+  padding-right: .9em;
+  .social-share img{
+    width: 2.3em;
+    height: 3em;
+  }
+}
+@media (max-width: 667px) {
+  .list-inline-item{
+    .social-share img{
+      width: 3em;
+      height: 2.7em;
+    }
+  }
+}
+
+.modal-content-style{
+  background-color: #636363;
+}
+
+.modal-header{
+  border: none;
+}
+.modal-footer{
+  border-top: 1px solid #434343;
 }

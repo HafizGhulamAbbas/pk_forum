@@ -1,0 +1,26 @@
+<%= form_with model: user, id: 'userForm' do |form| %>
+  <div class="row">
+    <div class="col">
+      <%= form.text_field :first_name, class: 'form-control field-style', placeholder: 'First Name', required: true, autocomplete: 'off' %>
+    </div>
+
+    <div class="col">
+      <%= form.text_field :last_name, class: 'form-control field-style', placeholder: 'Last Name', autocomplete: 'off', required: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col">
+      <%= form.email_field :email, class: 'form-control field-style', placeholder: 'Email', required: true, autocomplete: 'off' %>
+    </div>
+  </div><br>
+
+
+  <div class="form-group">
+    <%= form.number_field :phone, id: 'phone', class: 'form-control field-style', placeholder: 'Phone number (03-- -------)', required: true, autocomplete: 'off' %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'btn submit-button', value: 'SUBMIT', data: {disable_with: 'Please wait...'} %>
+  </div>
+<% end %>

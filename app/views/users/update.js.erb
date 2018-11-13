@@ -1,0 +1,5 @@
+$('#newUserModal').modal('hide');
+setTimeout(function(){
+    $('#updateUserFormWrapper').html("<%=j render 'users/form_modal', user: @user %>");
+    $('#newUserModal').modal();
+}, 300);
