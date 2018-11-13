@@ -1,31 +1,5 @@
 class UsersController < ApplicationController
 
-  api :POST, 'users.json', 'Register User'
-  param :first_name, String, required: true
-  param :last_name, String, required: true
-  param :email, String, required: true
-  param :zipcode, String, required: true
-  param :advertising_id, String, required: true
-  param :device_type, String, desc: 'android or ios', required: true
-  param :udid, String, required: true, desc: 'User device ID (by firebase) for push'
-  param :provider, String, desc: 'email or facebook or google or twitter', required: true
-  param :token, String, desc: 'facebook or google or twitter token'
-  param :uid, String, desc: 'facebook or google or twitter User ID'
-  error 500, 'Error occurred'
-  example '{
-      "id": 2,
-      "first_name": "Soban",
-      "last_name": "Akram",
-      "email": "test@mailinator.com",
-      "zipcode": "61010",
-      "city": "Lahore",
-      "state": "Punjab",
-      "country": "Pakistan",
-      "advertising_id": "wsb235346trt7fh3y4wg",
-      "device_type": "android",
-      "udid": "242354139dd44513465134r345e"
-    }'
-
   # TODO: Correct logic here, don't just dummy for all
   def create
     @user = User.where(email: user_params[:email]).assign_or_new(user_params)
