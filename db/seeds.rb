@@ -11,6 +11,12 @@
 #     password: 'admin'
 # )
 
+moderator = Moderator.create(
+  full_name: 'Ghulam Abbas',
+  user_name: 'admin@admin.com',
+  password: 'admin'
+)
+
 1.times do
   group1 = Group.create(name: 'Group-I', max_marks: 200)
   group2 = Group.create(name: 'Group-II', max_marks: 200)
@@ -90,7 +96,7 @@ end
 
 30.times do
   post = Post.create(
-      title: Faker::Lorem.sentence(20),
+      title: Faker::Lorem.sentence(word_count: 20),
       content: Faker::Lorem.paragraph,
       publish: true,
       subject_id: rand(1..51),

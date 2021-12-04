@@ -11,7 +11,7 @@ default: &default
     adapter: postgresql
     encoding: unicode
     username: postgres
-    password: Aqib321
+    password: Pakistan321
 
 
 development:

@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_11_13_162146) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "adminpack"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
