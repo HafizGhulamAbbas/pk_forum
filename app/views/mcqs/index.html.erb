@@ -1,0 +1,177 @@
+<p id="notice">
+  <%= notice %>
+</p>
+
+
+<div class="mcqs-main-heading">
+  <h1>Pakistan Forum MCQs</h1>
+</div>
+
+<div class="container seconday-navbar- container">
+  <div class="row secondary-navbar-row">
+    <div class="col wf">
+      <%= render 'shared/mcqs_header' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col wf"> Service 1 </div>
+
+    <div class="col-7 wf">
+
+      <h3 class="mcqs-listing-heading"> <%= @pageTitle %> </h3>
+
+      <%# Google Ad Section %>
+        <div class="ad-section">
+          <div class="card ad-card">
+            <div class="card-body">
+              <h5 class="card-title">Ad Title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Pak Study Mcqs , Get Complete Mcqs of Pakistan Studies for NTS,FPSC, PPSC,SPSC,CSS,PMS Test Preparation.
+          Basic Information About Pakistan Here are the Different Categories related to PakStudy Mcqs.</p>
+
+        <br>
+
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th colspan="4">PAKISTAN STUDIES MENU</th>
+            </tr>
+          </thead>
+
+          <!-- <caption>Life Expectancy By Current Age</caption> -->
+
+          <% @mcqs.each_with_index do |mcq, index| %>
+            <tr>
+              <th>
+                <%= index+1 %>
+              </th>
+              <td>
+                <%= mcq.optionA %>
+              </td>
+              <th>
+                <%= index+6 %>
+              </th>
+              <td>
+                <%= mcq.optionB %>
+              </td>
+            </tr>
+            <% end %>
+        </table>
+
+
+        <%# MCQs Listing %>
+          <ol class="list-group">
+            <% @mcqs.each_with_index do |mcq, index| %>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">
+                    <%= index+1 %> - <%= mcq.question %>
+                  </div>
+                  <ol class="list-group">
+                    <!-- <li class="list-group-flush">
+                      <%= mcq.subject %>
+                    </li> -->
+
+
+
+                    <% if mcq.correctOption==('A' || 'a' ) %>
+                      <strong>
+                    <% end %>
+                    <li class="list-group">
+                      <%= 'A. ' + mcq.optionA %>
+                    </li>
+                    <% if mcq.correctOption==('A' || 'a' ) %>
+                      </strong>
+                    <% end %>
+
+
+
+                    <% if mcq.correctOption==('B' || 'b' ) %>
+                      <strong>
+                    <% end %>
+                    <li class="list-group">
+                      <%= 'B. ' + mcq.optionB %>
+                    </li>
+                    <% if mcq.correctOption==('B' || 'b' ) %>
+                      </strong>
+                    <% end %>
+
+
+
+                    <% if mcq.correctOption==('C' || 'c' ) %>
+                      <strong>
+                    <% end %>
+                    <li class="list-group">
+                      <%= 'C. ' + mcq.optionC %>
+                    </li>
+                    <% if mcq.correctOption==('C' || 'c' ) %>
+                      </strong>
+                    <% end %>
+
+
+
+                    <% if mcq.correctOption==('D' || 'd' ) %>
+                      <strong>
+                    <% end %>
+                    <li class="list-group">
+                      <%= 'D. ' + mcq.optionD %>
+                    </li>
+                    <% if mcq.correctOption==('D' || 'd' ) %>
+                      </strong>
+                    <% end %>
+
+
+                    <% if mcq.correctOption==('E' || 'e' ) %>
+                      <strong>
+                    <% end %>
+                    <% if mcq.optionE? %>
+                      <li class="list-group">
+                        <%= 'E. ' + mcq.optionE %>
+                      </li>
+                    <% end %>
+                    <% if mcq.correctOption==('E' || 'e') %>
+                      </strong>
+                    <% end %>
+                  </ol>
+                </div>
+
+
+                <!-- <span>
+                  <h6>
+                    <%= mcq.moreInfo %>
+                  </h6>
+                  <h6>
+                    <%= link_to 'Show' , mcq %>
+                  </h6>
+                  <h6>
+                    <%= link_to 'Edit' , edit_mcq_path(mcq) %>
+                  </h6>
+                  <h6>
+                    <%= link_to 'Destroy' , mcq, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </h6>
+                </span> -->
+
+              </li>
+              <% end %>
+                <div class="pagination" style="margin-top: 3em; justify-content: flex-end;">
+                  <%= paginate @mcqs %>
+                </div>
+                <br>
+          </ol>
+
+          <!-- <%= link_to 'New Mcq' , new_mcq_path %> -->
+
+    </div>
+
+    <div class="col wf">
+
+    </div>
+  </div>
+</div>
+<br>

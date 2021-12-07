@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_162146) do
+ActiveRecord::Schema.define(version: 2021_12_04_105845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(version: 2018_11_13_162146) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "max_marks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mcqs", force: :cascade do |t|
+    t.string "subject"
+    t.string "question"
+    t.string "optionA"
+    t.string "optionB"
+    t.string "optionC"
+    t.string "optionD"
+    t.string "optionE"
+    t.string "correctOption"
+    t.string "moreInfo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,40 @@
+<ul class="nav nav-tabs noborder">
+  <li class="nav-item">
+    <%= link_to "HOME", mcqs_path(q: "home", pageTitle: "All MCQs"), class: "nav-link", "aria-current": "page" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "GK MCQs", mcqs_path(q: "gk", pageTitle: "General Knowledge MCQs"), class: "nav-link", "aria-current": "page" %>
+  </li>
+  <li class="nav-item dropdown">
+    <%= link_to "CURRENT AFFAIRS", mcqs_path(q: "current-affairs"), class: "nav-link dropdown-toggle", "data-bs-toggle": "dropdown", "role": "button", "aria-expanded": "false" %>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Pakistan Current Affairs", mcqs_path(q: "pakistan-current-affairs", pageTitle: "Pakistan Current Affairs MCQs"), class: "dropdown-item" %>
+        <li>
+          <li><%= link_to "World Current Affairs", mcqs_path(q: "world-current-affairs", pageTitle: "World Current Affairs MCQs"), class: "dropdown-item" %>
+            <li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to "PAKISTAN STUDY", mcqs_path(q: "pakistan-study", pageTitle: "Pakistan Study MCQs"), class: "nav-link", "aria-current": "page" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ISLAMIC STUDIES", mcqs_path(q: "islamic-studies", pageTitle: "Islamic Studies MCQs"), class: "nav-link", "aria-current": "page" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "EVERYDAY SCIENCE", mcqs_path(q: "everyday-science", pageTitle: "Everyday Science MCQs"), class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <%= link_to "OTHERS", mcqs_path(q: "others"), class: "nav-link dropdown-toggle", "data-bs-toggle": "dropdown", "role": "button", "aria-expanded": "false" %>
+            <ul class="dropdown-menu">
+              <li><%= link_to "English Mcqs", mcqs_path(q: "english", pageTitle: "English MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Maths Mcqs", mcqs_path(q: "maths", pageTitle: "Mathematics MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Computer Mcqs", mcqs_path(q: "computer", pageTitle: "Computer MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Pedagogy Mcqs", mcqs_path(q: "pedagogy", pageTitle: "Pedagogy MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Physics Mcqs", mcqs_path(q: "physics", pageTitle: "Physics MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Chemistry Mcqs", mcqs_path(q: "chemistry", pageTitle: "Chemistry MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Bio Mcqs", mcqs_path(q: "bio", pageTitle: "Biology MCQs"), class: "dropdown-item" %></li>
+              <li><%= link_to "Urdu Mcqs", mcqs_path(q: "urdu", pageTitle: "Urdu MCQs"), class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        </ul>
+        <style></style>

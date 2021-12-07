@@ -1,0 +1,31 @@
+.wf {
+    outline: 1px solid black;
+}
+.secondary-navbar-row {
+    min-height: 3rem;
+}
+.noborder{
+    border: none;
+}
+.noborder > li > a{
+    color: black;
+}
+.noborder > li > a:hover{
+    color: black;
+}
+.dropdown-menu{
+    background: #ecf0f1;
+}
+.ad-card{
+    width: 100%;
+    min-height: 10rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+.mcqs-main-heading{
+    margin: 3rem;
+    padding-left: 15rem;
+}
+.mcqs-listing-heading{
+    margin-top: 2rem;
+}

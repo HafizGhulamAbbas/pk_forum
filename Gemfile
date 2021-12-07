@@ -50,6 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
   gem 'rubocop-faker'
+  gem 'htmlbeautifier'
 end
 
 group :test do
@@ -82,3 +83,6 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+# Importing Data from an Excel File
+gem 'roo', '~> 2.8'

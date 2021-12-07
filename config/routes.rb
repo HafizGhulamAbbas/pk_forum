@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mcqs
+  get 'mcqs/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   ActiveAdmin.routes(self)
