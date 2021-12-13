@@ -142,3 +142,9 @@ input:after{
 .modal-footer{
   border-top: 1px solid #434343;
 }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}

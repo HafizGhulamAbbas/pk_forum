@@ -261,12 +261,31 @@
         </ul>
       </li>
 
-      <li class="last ">
+      <li class="">
         <a href="javascript:;">
           <i class="fa fa-envelope" aria-hidden="true"></i>
           <span class="title">Contact Us</span>
         </a>
       </li>
+
+      <% if logged_in? %>
+        <li class="", style= "float: right;">
+          <%= link_to "Logout", logout_path %>
+        </li>
+      <%end%>
+
+      <% if !logged_in? %>
+        <li class="", style= "float: right;">
+          <%= link_to "Login", login_path %>
+        </li>
+      <%end%>
+
+      <% if !logged_in? %>
+        <li class="", style= "float: right;">
+            <%= link_to "Sign Up", new_user_path %>
+        </li>
+      <%end%>
+
     </ul>
   </nav>
 </div>

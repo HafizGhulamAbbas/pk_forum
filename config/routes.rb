@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'posts#index'
+  # root to: 'posts#index'
+  root to: 'sessions#welcome'
 
   resources :posts do
     collection do
@@ -14,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i[create update]
+  resources :users, only: %i[new create]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'logout', to: 'sessions#logout'
 
   # resources :settings, only: %i[new create edit update]
   # resources :dashboard, only: [:index]

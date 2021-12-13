@@ -58,7 +58,10 @@
                 <div class="content-title">
                   <div class="text-center">
                     <h3>
-                      <a data-toggle="<%= 'modal' unless session[:user_id] %>" href="<%= session[:user_id].present? ? post_path(post) : '#newUserModal' %>">
+                      <!-- <a data-toggle="<%= 'modal' unless session[:user_id] %>" href="<%= session[:user_id].present? ? post_path(post) : '#newUserModal' %>">
+                        <%= strip_tags(post.content).truncate(70) %>
+                      </a> -->
+                      <a data-toggle="modal" href="<%= post_path(post) %>">
                         <%= strip_tags(post.content).truncate(70) %>
                       </a>
                     </h3>

@@ -1,15 +1,44 @@
 class User < ApplicationRecord
 
+  PASSWORD_FORMAT = /\A
+  (?=.{8,})          # Must contain 8 or more characters
+  (?=.*\d)           # Must contain a digit
+  (?=.*[a-z])        # Must contain a lower case character
+  (?=.*[A-Z])        # Must contain an upper case character
+  (?=.*[[:^alnum:]]) # Must contain a symbol
+/x
+
+  # has_secure_password validations: false
+  has_secure_password
   devise :omniauthable, omniauth_providers: %i[facebook google_oauth2 twitter]
 
   enum device_type: %i[android ios web]
 
-  validates :first_name, :email, :zipcode, :advertising_id, :udid, :device_type, :provider, presence: true
+  # validates :first_name, :email, :zipcode, :advertising_id, :udid, :device_type, :provider, presence: true
+  validates :first_name, :last_name, :email, :password, :phone, presence: true
   validates :email, uniqueness: true
+  validates :password,
+  # length: {minimum: 8},
+  presence: true, 
+  length: { in: Devise.password_length }, 
+  format: { with: PASSWORD_FORMAT }, 
+  confirmation: true, 
+  on: :create 
 
-  before_save :fetch_location_data
+  validates :password, 
+  allow_nil: true, 
+  length: { in: Devise.password_length }, 
+  format: { with: PASSWORD_FORMAT }, 
+  confirmation: true, 
+  on: :update
+
+  # before_save :fetch_location_data
 
   # TODO: Add before_create and add dummy data based on device type
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def self.assign_or_new(attributes)
     obj = first || new
