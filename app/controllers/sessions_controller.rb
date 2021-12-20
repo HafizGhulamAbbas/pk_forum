@@ -23,5 +23,6 @@ class SessionsController < ApplicationController
   end
 
   def welcome
+    render layout: false
   end
 end

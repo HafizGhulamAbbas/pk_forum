@@ -15,8 +15,15 @@
   font-family: 'Quicksand-Reg';
   font-weight: normal;
   font-style: normal;
-  src: font_url('Quicksand-Regular.ttf') format('opentype');
+  src: font_url('landing-fontawesome-webfont.woff2') format('opentype');
 }
+
+// @font-face {
+//   font-family: 'landing-fontawesome-webfont';
+//   font-weight: normal;
+//   font-style: normal;
+//   src: font_url('Quicksand-Regular.ttf') format('opentype');
+// }
 
 * {
   font-family: Quicksand-Reg;
