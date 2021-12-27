@@ -16,8 +16,83 @@ Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts
   Rails.application.config.assets.precompile += %W[#{controller}.js #{controller}.css]
 end
 
-Rails.application.config.assets.precompile += %w( landing-animate.css landing-bootstrap.css landing-color-1.css landing-feather-icon.css landing-flag-icon.css landing-fontawesome.css landing-icofont.css landing-owlcarousel.css landing-responsive.css landing-style.css landing-themify.css)
-Rails.application.config.assets.precompile += %w( landing-jquery-3.5.1.min.js landing-feather.min.js landing-feather-icon.js landing-sidebar-menu.js landing-config.js landing-popper.min.js landing-bootstrap.min.js landing-owl.carousel.js landing-owl-custom.js landing-landing_sticky.js landing-landing.js landing-libs.min.js landing-script.js )
+Rails.application.config.assets.precompile += %w( 
+  landing-animate.css 
+  landing-bootstrap.css 
+  landing-color-1.css 
+  landing-feather-icon.css 
+  landing-flag-icon.css 
+  landing-fontawesome.css 
+  landing-icofont.css 
+  landing-owlcarousel.css 
+  landing-responsive.css 
+  landing-style.css 
+  landing-themify.css 
+  animate.css 
+  bootstrap.css 
+  chartist.css 
+  color-1.css 
+  date-picker.css 
+  feather-icon.css 
+  flag-icon.css 
+  fontawesome.css 
+  icofont.css 
+  prism.css 
+  responsive.css 
+  style.css 
+  themify.css 
+  vector-map.css 
+)
+Rails.application.config.assets.precompile += %w( 
+  landing-jquery-3.5.1.min.js 
+  landing-feather.min.js 
+  landing-feather-icon.js 
+  landing-sidebar-menu.js 
+  landing-config.js 
+  landing-popper.min.js 
+  landing-bootstrap.min.js 
+  landing-owl.carousel.js 
+  landing-owl-custom.js 
+  landing-landing_sticky.js 
+  landing-landing.js 
+  landing-libs.min.js 
+  landing-script.js 
+  apex-chart.js 
+  bootstrap-notify.min.js 
+  bootstrap.min.js 
+  chartist-plugin-tooltip.js 
+  chartist.js 
+  clipboard.min.js 
+  config.js 
+  counter-custom.js 
+  custom-card.js 
+  customizer.js 
+  datepicker.custom.js 
+  datepicker.en.js 
+  datepicker.js 
+  default.js 
+  feather-icon.js 
+  feather.min.js 
+  index.js 
+  jquery-3.5.1.min.js 
+  jquery-jvectormap-2.0.2.min.js
+  jquery-jvectormap-asia-mill.js 
+  jquery-jvectormap-au-mill.js 
+  jquery-jvectormap-chicago-mill-en.js 
+  jquery-jvectormap-in-mill.js 
+  jquery-jvectormap-uk-mill-en.js 
+  jquery-jvectormap-us-aea-en.js 
+  jquery-jvectormap-world-mill-en.js 
+  jquery.counterup.min.js 
+  jquery.waypoints.min.js 
+  knob-chart.js 
+  knob.min.js 
+  popper.min.js 
+  prism.min.js 
+  script.js 
+  sidebar-menu.js 
+  stock-prices.js
+)
 Rails.application.config.assets.precompile += %w( 
   landing-logo.png 
   landing-img-parten.png 
@@ -78,5 +153,20 @@ Rails.application.config.assets.precompile += %w(
   landing-application-10.jpg 
   landing-application-11.jpg 
   landing-application-12.jpg 
-
+  1.png 
+  logo.png 
+  dark-logo.png 
+  1.jpg 
+  2.jpg 
+  4.jpg 
+  product-1.png 
+  product-2.png 
+  product-3.png 
+  product-4.png 
+  product-5.png 
+  graph-1.png 
+  graph-2.png 
+  graph-3.png 
+  graph-4.png 
+  graph-5.png 
 )

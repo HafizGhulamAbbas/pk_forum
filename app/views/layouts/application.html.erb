@@ -1,34 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--  <link rel="icon" href="<%#= image_path('favicon.png') %>" type="image/png">-->
-  <title>Pakistan's Forum</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag "#{params[:controller]}", media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag "#{params[:controller]}", media: 'all', 'data-turbolinks-track': 'reload' %>
 
+
+  <!-- New Theme -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="viho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+
+    <link rel="icon" href="<%#= image_path('favicon.png') %>" type="image/png">
+    <link rel="shortcut icon" href="<%#= image_path('favicon.png') %>" type="image/x-icon">
+
+    <title>Pakistan's Forum</title>
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome-->
+    <%= stylesheet_link_tag 'fontawesome', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- ico-font-->
+    <%= stylesheet_link_tag 'icofont', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Themify icon-->
+    <%= stylesheet_link_tag 'themify', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Flag icon-->
+    <%= stylesheet_link_tag 'flag-icon', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Feather icon-->
+    <%= stylesheet_link_tag 'feather-icon', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Plugins css start-->
+    <%= stylesheet_link_tag 'animate', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'chartist', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'date-picker', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'prism', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'vector-map', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <%= stylesheet_link_tag 'bootstrap', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- App css-->
+    <%= stylesheet_link_tag 'style', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'color-1', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Responsive css-->
+    <%= stylesheet_link_tag 'responsive', rel: 'stylesheet', type: 'text/css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
 </head>
 
-<body style="display: grid" oncontextmenu="return false">
-<%= render 'shared/header' %>
+<body>
 
-<!-- <% if flash[:notice] %>
-  <div class="alert alert-success" style="padding-top: 4em;"><%= flash[:notice] %></div>
-<% elsif flash[:alert] %>
-  <div class="alert alert-info" style="padding-top: 4em;"><%= flash[:alert] %></div>
-<% end %> -->
+  <!-- Loader starts-->
+  <div class="loader-wrapper">
+    <div class="theme-loader">    
+      <div class="loader-p"></div>
+    </div>
+  </div>
+
+  <!-- Loader ends-->
+  <!-- page-wrapper Start-->
+  <div class="page-wrapper compact-wrapper" id="pageWrapper">
+  
+  
+    <!-- TOP NAV PARTIAL-->
+    <%= render 'shared/top_nav' %>
+    
+    
+    <!-- Page Body Start-->
+    <div class="page-body-wrapper sidebar-icon">
+      
+      
+      <!-- Page Sidebar Start-->
+      <header class="main-nav">
+        
+        <!-- PROFILE PARTIAL --->
+        <%= render 'shared/profile' %>
+
+        <!-- LEFT MENU BAR PARTAIL -->
+        <%= render 'shared/left_menubar' %>
 
 
-<div class="main-container">
-  <%= yield %>
-</div>
+      </header>
+      <!-- Page Sidebar Ends-->
 
-<%= render 'shared/footer' %>
+
+      <%= yield %>
+
+      
+      <%= render 'shared/footer' %>
+
+    </div>
+  </div>
+
+
+<!-- latest jquery-->
+<%= javascript_include_tag "jquery-3.5.1.min" %>
+<!-- feather icon js-->
+<%= javascript_include_tag "feather.min" %>
+<%= javascript_include_tag "feather-icon" %>
+<!-- Sidebar jquery-->
+<%= javascript_include_tag "sidebar-menu" %>
+<%= javascript_include_tag "config" %>
+<!-- Bootstrap js-->
+<%= javascript_include_tag "popper.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<!-- Plugins JS start-->
+<%= javascript_include_tag "chartist" %>
+<%= javascript_include_tag "chartist-plugin-tooltip" %>
+<%= javascript_include_tag "knob.min" %>
+<%= javascript_include_tag "knob-chart" %>
+<%= javascript_include_tag "apex-chart" %>
+<%= javascript_include_tag "stock-prices" %>
+<%= javascript_include_tag "prism.min" %>
+<%= javascript_include_tag "clipboard.min" %>
+<%= javascript_include_tag "jquery.waypoints.min" %>
+<%= javascript_include_tag "jquery.counterup.min" %>
+<%= javascript_include_tag "counter-custom" %>
+<%= javascript_include_tag "custom-card" %>
+<%= javascript_include_tag "bootstrap-notify.min" %>
+<%= javascript_include_tag "jquery-jvectormap-2.0.2.min" %>
+<%= javascript_include_tag "jquery-jvectormap-world-mill-en" %>
+<%= javascript_include_tag "jquery-jvectormap-us-aea-en" %>
+<%= javascript_include_tag "jquery-jvectormap-uk-mill-en" %>
+<%= javascript_include_tag "jquery-jvectormap-au-mill" %>
+<%= javascript_include_tag "jquery-jvectormap-chicago-mill-en" %>
+<%= javascript_include_tag "jquery-jvectormap-in-mill" %>
+<%= javascript_include_tag "jquery-jvectormap-asia-mill" %>
+<%= javascript_include_tag "default" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "datepicker" %>
+<%= javascript_include_tag "datepicker.en" %>
+<%= javascript_include_tag "datepicker.custom" %>
+<!-- Plugins JS Ends-->
+<!-- Theme js-->
+<%= javascript_include_tag "script" %>
+<%= javascript_include_tag "customizer" %>
+<!-- login js-->
+<!-- Plugin used-->
+
 </body>
 </html>
 

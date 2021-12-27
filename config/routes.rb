@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
+  get 'home', to: 'sessions#home'
   get 'logout', to: 'sessions#logout'
 
   # resources :settings, only: %i[new create edit update]
