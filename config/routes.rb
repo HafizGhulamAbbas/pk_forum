@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :mcqs
   get 'mcqs/index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   ActiveAdmin.routes(self)
@@ -22,6 +23,16 @@ Rails.application.routes.draw do
   get 'home', to: 'sessions#home'
   get 'coming-soon', to: 'sessions#coming_soon'
   get 'logout', to: 'sessions#logout'
+
+  get 'css-faqs', to: 'faqs#css'
+  get 'fpsc-faqs', to: 'faqs#fpsc'
+  get 'ppsc-faqs', to: 'faqs#ppsc'
+  get 'kppsc-faqs', to: 'faqs#kppsc'
+  get 'spsc-faqs', to: 'faqs#spsc'
+  get 'bpsc-faqs', to: 'faqs#bpsc'
+  get 'nts-faqs', to: 'faqs#nts'
+  get 'pts-faqs', to: 'faqs#pts'
+  get 'ots-faqs', to: 'faqs#ots'
 
   # resources :settings, only: %i[new create edit update]
   # resources :dashboard, only: [:index]
