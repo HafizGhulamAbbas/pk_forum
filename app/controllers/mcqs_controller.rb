@@ -1,5 +1,7 @@
 class McqsController < InheritedResources::Base
 
+  skip_before_action :authorized, only: [:index]
+
   def index
     # @mcqs = Mcq.page(params[:page]).per(Setting.post_per_page)
     if params[:q].present?

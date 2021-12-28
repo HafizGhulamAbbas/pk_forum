@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  skip_before_action :authorized, only: [:new, :create, :welcome, :home]
+  skip_before_action :authorized, only: [:new, :create, :welcome, :home, :coming_soon]
 
   def new
   end
@@ -28,5 +28,9 @@ class SessionsController < ApplicationController
 
   def home
     # render layout: false
+  end
+
+  def coming_soon
+
   end
 end

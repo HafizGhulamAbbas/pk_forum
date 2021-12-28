@@ -155,6 +155,7 @@ Rails.application.config.assets.precompile += %w(
   landing-application-12.jpg 
   1.png 
   logo.png 
+  logo-1.png 
   dark-logo.png 
   1.jpg 
   2.jpg 
@@ -169,4 +170,5 @@ Rails.application.config.assets.precompile += %w(
   graph-3.png 
   graph-4.png 
   graph-5.png 
+  coming-soon-bg.jpg 
 )
