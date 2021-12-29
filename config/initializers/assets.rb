@@ -175,4 +175,15 @@ Rails.application.config.assets.precompile += %w(
   faq-2.jpg 
   faq-3.jpg 
   faq-4.jpg 
+  blog.jpg 
+  blog-2.jpg 
+  blog-3.jpg 
+  blog-5.jpg 
+  blog-6.jpg 
+  blog-4.jpg 
+  blog-5.jpg 
+  blog-12.jpg 
+  blog-14.jpg 
+  blog-comment.jpg 
+  blog-single.jpg 
 )
