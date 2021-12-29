@@ -12,6 +12,8 @@ class Post < ApplicationRecord
 
   scope :published, -> { where(publish: true).order(id: :desc) }
 
+  has_many_attached :images
+
 
   def self.matching_title_or_content search
     where('title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%")
