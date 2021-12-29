@@ -122,30 +122,33 @@
       <% @posts.each do |post| %>
         <div class="col-sm-6 col-xl-3 box-col-6 des-xl-50">
           <div class="card">
-            <div class="blog-box blog-grid">
-              <div class="blog-wrraper">
-                <%= link_to post_path(post.id) do %>
-                  <%= image_tag('blog-6.jpg', {class: 'img-fluid top-radius-blog'}) %>
-                <% end %>
-              </div>
-              <div class="blog-details-second">
-                <div class="blog-post-date"><span class="blg-month">apr</span><span class="blg-date">10</span></div>
-                <h6><%= truncate(post.title.titleize, length: 60, separator: ' ') %></h6>
-                <span>
-                  <p>
-                    <%= truncate(post.content.html_safe, length: 60, separator: ' ') %> 
-                    <%= button_to "Read More", post_path(post), :class => "btn btn-square btn-info btn-xs", :method => :get %>
-                  </p>
-                </span>
-                <div class="detail-footer"> 
-                  <ul class="sociyal-list">
-                    <li><i class="fa fa-user-o"></i>admin</li>
-                    <li><i class="fa fa-comments-o"></i>5</li>
-                    <li><i class="fa fa-thumbs-o-up"></i>2 like</li>
-                  </ul>
+            <%= link_to post_path(post.id) do %>
+              <div class="blog-box blog-grid">
+                <div class="blog-wrraper">
+                  
+                    <%= image_tag('blog-6.jpg', {class: 'img-fluid top-radius-blog'}) %>
+                  
+                </div>
+                <div class="blog-details-second">
+                  <div class="blog-post-date"><span class="blg-month">apr</span><span class="blg-date">10</span></div>
+                  <h6><%= truncate(post.title.titleize, length: 60) %></h6>
+                  <span>
+                    <p>
+                      <%= truncate(post.content.html_safe, length: 60) %> 
+                      <%= button_to "Read More", post_path(post), :class => "btn btn-square btn-info btn-xs", :method => :get %>
+                    </p>
+                  </span>
+                  <% end %>
+                  <div class="detail-footer"> 
+                    <ul class="sociyal-list">
+                      <li><i class="fa fa-user-o"></i>admin</li>
+                      <li><i class="fa fa-comments-o"></i>5</li>
+                      <li><i class="fa fa-thumbs-o-up"></i>2 like</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>
       <% end %>
