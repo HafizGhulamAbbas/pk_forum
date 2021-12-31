@@ -27,10 +27,8 @@ class SessionsController < ApplicationController
   end
 
   def home
-    # render layout: false
   end
 
   def coming_soon
-
   end
 end

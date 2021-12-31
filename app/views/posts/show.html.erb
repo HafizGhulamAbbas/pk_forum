@@ -5,19 +5,29 @@
         <div class="col-sm-6">
           <h3>News Detail</h3>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><%= link_to "Home", home_path %></li>
-            <li class="breadcrumb-item"><%= link_to "News", posts_path %></li>
-            <li class="breadcrumb-item active"><%= truncate(@post.title.titleize, length: 50, separator: ' ') %></li>
+            <li class="breadcrumb-item">
+              <%= link_to "Home" , home_path %>
+            </li>
+            <li class="breadcrumb-item">
+              <%= link_to "News" , posts_path %>
+            </li>
+            <li class="breadcrumb-item active">
+              <%= truncate(@post.title.titleize, length: 30, separator: ' ' ) %>
+            </li>
           </ol>
         </div>
         <div class="col-sm-6">
           <!-- Bookmark Start-->
           <div class="bookmark">
             <ul>
-              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
-              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
-              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
-              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top"
+                  title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top"
+                  title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top"
+                  title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+              <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top"
+                  title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
               <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
                 <form class="form-inline search-form">
                   <div class="form-group form-control-search">
@@ -39,121 +49,124 @@
         <div class="blog-single">
           <div class="blog-box blog-details">
             <div class="banner-wrraper">
-              <%= image_tag('blog-single.jpg', {class: 'img-fluid w-100 bg-img-cover'}) %>
+              <%= image_tag('blog-single.jpg', {class: 'img-fluid w-100 bg-img-cover' }) %>
             </div>
             <div class="card">
               <div class="card-body">
                 <div class="blog-details">
                   <ul class="blog-social">
-                    <li><%= time_ago(@post.created_at)%></li>
+                    <li>
+                      <%= time_ago(@post.created_at)%>
+                    </li>
                     <li><i class="icofont icofont-user"></i>Mark <span>Jecno </span></li>
                     <li><i class="icofont icofont-thumbs-up"></i>02<span>Hits</span></li>
-                    <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
+                    <% @comments = @post.comments.approved.count %>
+                    <li><i class="icofont icofont-ui-chat"></i> <%= @comments > 0 ? pluralize(@comments, 'Comment') : 'No Comments' %> </li>
+
                   </ul>
-                  <h4><%= @post.title %></h4>
+                  <h4>
+                    <%= @post.title %>
+                  </h4>
                   <div class="single-blog-content-top">
-                    <p><%= @post.content.html_safe %></p>
+                    <p>
+                      <%= @post.content.html_safe %>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="card comment-box">
-            <div class="card-body">
-              <h4>Comments</h4>
-              <ul>
-                <li>
-                  <div class="media align-self-center">
-                    <%= image_tag('blog-comment.jpg', {class: 'align-self-center'}) %>
-                    <div class="media-body">
-                      <div class="row">
-                        <div class="col-md-4"><a href="user-profile.html">
-                            <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8">
-                          <ul class="comment-social">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <ul>
+
+          <% if @post.comments.present? %>
+            <div class="card comment-box">
+              <div class="card-body">
+                  <h4>Comments</h4>
+                <ul>
+                  <% @post.comments.approved.each.with_index(1) do |comment, index| %>
                     <li>
-                      <div class="media">
-                        <%= image_tag('blog-9.jpg', {class: 'align-self-center'}) %>
+                      <div class="media align-self-center">
+                        <!-- <%= image_tag('blog-comment.jpg', {class: 'align-self-center'}) %> -->
                         <div class="media-body">
                           <div class="row">
-                            <div class="col-xl-12"><a href="user-profile.html">
-                                <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
+                            <div class="col-md-4">
+                              <%= link_to home_path do %>
+                                <!-- <h6 class="mt-0"><%= comment.visitor.full_name %><span> ( Designer )</span></h6> -->
+                                <h6 class="mt-0"><%= comment.visitor.full_name %></h6>
+                              <% end %>
+                            </div>
+                            <div class="col-md-8">
+                              <ul class="comment-social">
+                                <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
+                                <li><i class="icofont icofont-ui-chat"></i><%= @post.comments.approved.count %></li>
+                              </ul>
+                            </div>
                           </div>
-                          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                          <p><%= comment.message %></p>
                         </div>
                       </div>
                     </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="media">
-                    <%= image_tag('blog-4.jpg', {class: 'align-self-center'}) %>
-                    <div class="media-body">
-                      <div class="row">
-                        <div class="col-md-4"><a href="user-profile.html">
-                            <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8">
-                          <ul class="comment-social">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
+                  <% end %>
+                  <!-- <li>
+                    <ul>
+                      <li>
+                        <div class="media">
+                          <%= image_tag('blog-9.jpg', {class: 'align-self-center'}) %>
+                          <div class="media-body">
+                            <div class="row">
+                              <div class="col-xl-12"><a href="user-profile.html">
+                                  <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
+                            </div>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                          </div>
                         </div>
-                      </div>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media">
-                    <%= image_tag('blog-12.png', {class: 'align-self-center'}) %>
-                    <div class="media-body">
-                      <div class="row">
-                        <div class="col-md-4"><a href="user-profile.html">
-                            <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8">
-                          <ul class="comment-social">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media">
-                    <%= image_tag('blog-14.png', {class: 'align-self-center'}) %>
-                    <div class="media-body">
-                      <div class="row">
-                        <div class="col-md-4"><a href="user-profile.html">
-                            <h6 class="mt-0 text-start">Jolio Mark<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8">
-                          <ul class="comment-social">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+                      </li>
+                    </ul>
+                  </li> -->
+                </ul>
             </div>
-          </div>
+          <% end %>
         </div>
+
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5>Have your say?</h5><span>Reveal your unique thoughts to the World!</span>
+            </div>
+            <div class="card-body">
+              <%= form_for @visitor_comment, url: comments_url, :html => {:class => 'row theme-form mt-3'} do |f| %>
+                <% if session[:visitor_errors] %>
+                  <div id="error_explanation">
+                    <h2> <%= pluralize(session[:visitor_errors].count, "error" ) %> prohibited this comment from being saved: </h2>
+                    <h2>Complete the below form for comment to be saved: </h2>
+                    <ul>
+                      <% session[:visitor_errors].each do |message| %>
+                        <li> <%= message %> </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                  <div class="col-xxl-6 mb-3 d-flex">
+                    <%= f.label :full_name, class: 'col-form-label sr-only' %>
+                    <%= f.text_field :full_name, class: 'form-control' , placeholder: 'Full Name', required: true %>
+                  </div>
+                  <div class="col-xxl-6 mb-3 d-flex">
+                    <%= f.label :email, class: 'col-form-label sr-only' %>
+                    <%= f.text_field :email, class: 'form-control', placeholder: 'Email Address', required: true, pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' %>
+                    <!-- <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small> -->
+                  </div>
+                  <div class="mb-3">
+                    <%= f.fields_for :comments do |c| %>
+                      <%= c.label :message, class: 'col-form-label sr-only' %>
+                        <%= c.text_area :message, class: 'form-control' , placeholder: 'Message', required: true %>
+                        <%= c.hidden_field :post_id, value: @post.id %>
+                    <% end %>
+                  </div>
+            </div>
+            <div class="card-footer">
+              <%= f.submit 'Add Comment' , class: 'btn btn-primary' %>
+            </div>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>
