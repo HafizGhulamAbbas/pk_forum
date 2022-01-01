@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_200503) do
 
   create_table "comments", force: :cascade do |t|
     t.text "message"
-    t.boolean "status", default: false
+    t.boolean "status", default: true
     t.bigint "post_id"
     t.bigint "visitor_id"
     t.datetime "created_at", null: false
@@ -101,10 +101,11 @@ ActiveRecord::Schema.define(version: 2021_12_29_200503) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
+    t.boolean "status", default: true, null: false
+    t.boolean "boolean", default: true, null: false
     t.bigint "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: false, null: false
     t.index ["visitor_id"], name: "index_messages_on_visitor_id"
   end
 
