@@ -86,4 +86,3 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Importing Data from an Excel File
 gem 'roo', '~> 2.8'
-gem 'faker'
