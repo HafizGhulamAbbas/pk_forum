@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :post_tags
 
   scope :published, -> { where(publish: true).order(id: :desc) }
+  scope :popular, -> { joins(:comments).order("comments_count DESC").uniq }
 
   has_many_attached :images
 

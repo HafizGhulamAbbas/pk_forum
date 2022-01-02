@@ -4,12 +4,12 @@ class PostsController < ApplicationController
   after_action :clear_sessions, only: [:show]
 
   def index
+    @popular = Post.popular.first(3)
     if params[:tag].present?
       @posts = Post.filter_by_tags(params[:tag]).page(params[:page]).per(Setting.post_per_page)
     else
       @posts = Post.published.page(params[:page]).per(Setting.post_per_page)
     end
-    # @posts = Post.all
   end
 
   def show

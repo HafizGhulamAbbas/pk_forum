@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.boolean :publish
+      t.integer :comments_count
       t.references :moderator, foreign_key: true
 
       t.timestamps

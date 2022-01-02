@@ -39,14 +39,16 @@
           <div class="blog-box blog-shadow">
             <%= image_tag('blog.jpg', {class: 'img-fluid bg-img-cover'}) %>
             <div class="blog-details">
-              <p>25 July 2018</p>
-              <%= link_to post_path(@posts.first.id) do %>
-                <h4>Accusamus et iusto odio dignissimos ducimus qui blanditiis.</h4>
+              <p><%= @popular[0].created_at.strftime("%m %B %Y") %></p>
+              <!-- <p>25 July 2018</p> -->
+              <%= link_to post_path(@popular[0].id) do %>
+                <h4><%= truncate(@popular[0].title.titleize, length: 65) %></h4>
               <% end %>
               <ul class="blog-social">
-                <li><i class="icofont icofont-user"></i>Mark Jecno</li>
+                <li><i class="icofont icofont-user"></i><%= truncate(@popular[0].moderator.full_name, length: 40) %></li>
                 <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
+                <% @comments = @popular[0].comments.approved.count %>
+                <li><i class="icofont icofont-ui-chat"></i><%= @comments> 0 ? pluralize(@comments, 'Comment') : 'No Comments' %></li>
               </ul>
             </div>
           </div>
@@ -59,25 +61,25 @@
               <div class="blog-box blog-list row">
                 <div class="col-xl-6 col-12">
                   <div class="blog-wrraper">
-                    <%= link_to post_path(@posts.first.id) do %>
+                    <%= link_to post_path(@popular[1].id) do %>
                       <%= image_tag('blog-2.jpg', {class: 'img-fluid sm-100-wp p-0'}) %>
                     <% end %>
                   </div>
                 </div>
                 <div class="col-xl-6 col-12">
                   <div class="blog-details">
-                    <div class="blog-date"><span>02</span> January 2021</div>
-                    <%= link_to post_path(@posts.first.id) do %>
-                      <h6>Perspiciatis unde omnis iste natus</h6>
+                    <div class="blog-date"><span><%= @popular[1].created_at.strftime("%m") %></span> <%= @popular[1].created_at.strftime("%B %Y") %></div>
+                    <%= link_to post_path(@popular[1].id) do %>
+                      <h6><%= truncate(@popular[1].title.titleize, length: 35) %></h6>
                     <% end %>
                     <div class="blog-bottom-content">
                       <ul class="blog-social">
-                        <li>by: Admin</li>
+                        <li>by: <%= truncate(@popular[1].moderator.full_name, length: 25) %></li>
                         <li>12 Hits</li>
                       </ul>
                       <hr>
-                      <%= link_to post_path(@posts.first.id) do %>
-                        <p class="mt-0">inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <%= link_to post_path(@popular[1].id) do %>
+                        <p class="mt-0"><%= truncate(@popular[1].content.html_safe, length: 110) %></p>
                       <% end %>
                     </div>
                   </div>
@@ -90,25 +92,25 @@
               <div class="blog-box blog-list row">
                 <div class="col-xl-6 col-12">
                   <div class="blog-wrraper">
-                    <%= link_to post_path(@posts.first.id) do %>
+                    <%= link_to post_path(@popular[2].id) do %>
                       <%= image_tag('blog-3.jpg', {class: 'img-fluid sm-100-wp p-0'}) %>
                     <% end %>
                   </div>
                 </div>
                 <div class="col-xl-6 col-12">
                   <div class="blog-details">
-                    <div class="blog-date"><span>03</span> January 2021</div>
-                    <%= link_to post_path(@posts.first.id) do %>
-                      <h6>Perspiciatis unde omnis iste natus</h6>
+                    <div class="blog-date"><span><%= @popular[2].created_at.strftime("%m") %></span> <%= @popular[2].created_at.strftime("%B %Y") %></div>
+                    <%= link_to post_path(@popular[2].id) do %>
+                      <h6><%= truncate(@popular[2].title.titleize, length: 35) %></h6>
                     <% end %>
                     <div class="blog-bottom-content">
                       <ul class="blog-social">
-                        <li>by: Admin</li>
+                        <li>by: <%= truncate(@popular[2].moderator.full_name, length: 25) %></li>
                         <li>5 Hits</li>
                       </ul>
                       <hr>
-                      <%= link_to post_path(@posts.first.id) do %>
-                        <p class="mt-0">inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.</p>
+                      <%= link_to post_path(@popular[2].id) do %>
+                        <p class="mt-0"><%= truncate(@popular[2].content.html_safe, length: 110) %></p>
                       <% end %>
                     </div>
                   </div>
@@ -130,19 +132,25 @@
                   
                 </div>
                 <div class="blog-details-second">
-                  <div class="blog-post-date"><span class="blg-month">apr</span><span class="blg-date">10</span></div>
+                  <div class="blog-post-date"><span class="blg-month"><%= post.created_at.strftime("%b") %></span><span class="blg-date"><%= post.created_at.strftime("%d") %></span></div>
                   <h6><%= truncate(post.title.titleize, length: 50) %></h6>
                   <span>
                     <p>
-                      <%= truncate(post.content.html_safe, length: 60) %> 
+                      <%= truncate(post.content.html_safe, length: 60) %>
                       <%= button_to "Read More", post_path(post), :class => "btn btn-square btn-info btn-xs", :method => :get %>
                     </p>
+                    <div class="card-body p-0 m-0 p-b-5">
+                      <% post.tags.each do |tag| %>
+                      <% @tag_index = rand(8) %>
+                        <span class="badge badge-<%= @tag_names[@tag_index] %> <%= (@tag_index == 4 || @tag_index == 6) ? 'text-dark' : '' %> "><%= tag.name.capitalize %></span>
+                      <% end %>
+                    </div>
                   </span>
                   <% end %>
                   <div class="detail-footer"> 
                     <ul class="sociyal-list">
                       <li><i class="fa fa-user-o"></i><%= truncate(post.moderator.full_name, length: 19) %></li>
-                      <li><i class="fa fa-comments-o"></i>5</li>
+                      <li><i class="fa fa-comments-o"></i><%= post.comments.approved.count %></li>
                       <li><i class="fa fa-thumbs-o-up"></i>2 like</li>
                     </ul>
                   </div>

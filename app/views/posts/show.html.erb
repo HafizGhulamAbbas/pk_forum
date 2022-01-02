@@ -58,11 +58,25 @@
                     <li>
                       <%= time_ago(@post.created_at)%>
                     </li>
-                    <li><i class="icofont icofont-user"></i><%= @post.moderator.full_name %></li>
+                    <li><i class="icofont icofont-user"></i>
+                      <%= @post.moderator.full_name %>
+                    </li>
                     <li><i class="icofont icofont-thumbs-up"></i>02<span>Hits</span></li>
                     <% @comments = @post.comments.approved.count %>
-                    <li><i class="icofont icofont-ui-chat"></i> <%= @comments > 0 ? pluralize(@comments, 'Comment') : 'No Comments' %> </li>
-
+                      <li><i class="icofont icofont-ui-chat"></i>
+                        <%= @comments> 0 ? pluralize(@comments, 'Comment') : 'No Comments' %>
+                      </li>
+                      <li>
+                        <div class="card-body p-0 m-0 p-b-5">
+                          <% @post.tags.each do |tag| %>
+                            <% @tag_index=rand(8) %>
+                              <span
+                                class="badge badge-<%= @tag_names[@tag_index] %> <%= (@tag_index == 4 || @tag_index == 6) ? 'text-dark' : '' %> ">
+                                <%= tag.name.capitalize %>
+                              </span>
+                              <% end %>
+                        </div>
+                      </li>
                   </ul>
                   <h4>
                     <%= @post.title %>
@@ -77,10 +91,10 @@
             </div>
           </div>
 
-          <% if @post.comments.present? %>
+          <% if @post.comments.approved.present? %>
             <div class="card comment-box">
               <div class="card-body">
-                  <h4>Comments</h4>
+                <h4>Comments</h4>
                 <ul>
                   <% @post.comments.approved.each.with_index(1) do |comment, index| %>
                     <li>
@@ -91,22 +105,28 @@
                             <div class="col-md-4">
                               <%= link_to home_path do %>
                                 <!-- <h6 class="mt-0"><%= comment.visitor.full_name %><span> ( Designer )</span></h6> -->
-                                <h6 class="mt-0"><%= comment.visitor.full_name %></h6>
-                              <% end %>
+                                <h6 class="mt-0">
+                                  <%= comment.visitor.full_name %>
+                                </h6>
+                                <% end %>
                             </div>
                             <div class="col-md-8">
                               <ul class="comment-social">
                                 <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                                <li><i class="icofont icofont-ui-chat"></i><%= @post.comments.approved.count %></li>
+                                <li><i class="icofont icofont-ui-chat"></i>
+                                  <%= @post.comments.approved.count %>
+                                </li>
                               </ul>
                             </div>
                           </div>
-                          <p><%= comment.message %></p>
+                          <p>
+                            <%= comment.message %>
+                          </p>
                         </div>
                       </div>
                     </li>
-                  <% end %>
-                  <!-- <li>
+                    <% end %>
+                      <!-- <li>
                     <ul>
                       <li>
                         <div class="media">
@@ -123,50 +143,58 @@
                     </ul>
                   </li> -->
                 </ul>
+              </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
 
-          <div class="card">
-            <div class="card-header pb-0">
-              <h5>Have your say?</h5><span>Reveal your unique thoughts to the World!</span>
-            </div>
-            <div class="card-body">
-              <%= form_for @visitor_comment, url: comments_url, :html => {:class => 'row theme-form mt-3'} do |f| %>
-                <% if session[:visitor_errors] %>
-                  <div id="error_explanation">
-                    <h2> <%= pluralize(session[:visitor_errors].count, "error" ) %> prohibited this comment from being saved: </h2>
-                    <h2>Complete the below form for comment to be saved: </h2>
-                    <ul>
-                      <% session[:visitor_errors].each do |message| %>
-                        <li> <%= message %> </li>
-                      <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-
-                  <div class="col-xxl-6 mb-3 d-flex">
-                    <%= f.label :full_name, class: 'col-form-label sr-only' %>
-                    <%= f.text_field :full_name, class: 'form-control' , placeholder: 'Full Name', required: true %>
-                  </div>
-                  <div class="col-xxl-6 mb-3 d-flex">
-                    <%= f.label :email, class: 'col-form-label sr-only' %>
-                    <%= f.text_field :email, class: 'form-control', placeholder: 'Email Address', required: true, pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' %>
-                    <!-- <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small> -->
-                  </div>
-                  <div class="mb-3">
-                    <%= f.fields_for :comments do |c| %>
-                      <%= c.label :message, class: 'col-form-label sr-only' %>
-                        <%= c.text_area :message, class: 'form-control' , placeholder: 'Message', required: true %>
-                        <%= c.hidden_field :post_id, value: @post.id %>
+            <div class="card">
+              <div class="card-header pb-0">
+                <h5>Have your say?</h5><span>Reveal your unique thoughts to the World!</span>
+              </div>
+              <div class="card-body">
+                <%= form_for @visitor_comment, url: comments_url, :html=> {:class => 'row theme-form mt-3'} do |f| %>
+                  <% if session[:visitor_errors] %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(session[:visitor_errors].count, "error" ) %> prohibited this comment from being
+                          saved:
+                      </h2>
+                      <h2>Complete the below form for comment to be saved: </h2>
+                      <ul>
+                        <% session[:visitor_errors].each do |message| %>
+                          <li>
+                            <%= message %>
+                          </li>
+                          <% end %>
+                      </ul>
+                    </div>
                     <% end %>
-                  </div>
+
+                      <div class="col-xxl-6 mb-3 d-flex">
+                        <%= f.label :full_name, class: 'col-form-label sr-only' %>
+                          <%= f.text_field :full_name, class: 'form-control' , placeholder: 'Full Name' , required: true
+                            %>
+                      </div>
+                      <div class="col-xxl-6 mb-3 d-flex">
+                        <%= f.label :email, class: 'col-form-label sr-only' %>
+                          <%= f.text_field :email, class: 'form-control' , placeholder: 'Email Address' , required:
+                            true, pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' %>
+                            <!-- <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small> -->
+                      </div>
+                      <div class="mb-3">
+                        <%= f.fields_for :comments do |c| %>
+                          <%= c.label :message, class: 'col-form-label sr-only' %>
+                            <%= c.text_area :message, class: 'form-control' , placeholder: 'Message' , required: true %>
+                              <%= c.hidden_field :post_id, value: @post.id %>
+                                <% end %>
+                      </div>
+              </div>
+              <div class="card-footer">
+                <%= f.submit 'Add Comment' , class: 'btn btn-primary' %>
+              </div>
+              <% end %>
             </div>
-            <div class="card-footer">
-              <%= f.submit 'Add Comment' , class: 'btn btn-primary' %>
-            </div>
-            <% end %>
-          </div>
+        </div>
       </div>
     </div>
   </div>

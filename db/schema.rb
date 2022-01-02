@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_200503) do
     t.string "title"
     t.text "content"
     t.boolean "publish"
+    t.integer "comments_count"
     t.bigint "moderator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
