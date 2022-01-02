@@ -61,7 +61,20 @@
                     <li><i class="icofont icofont-user"></i>
                       <%= @post.moderator.full_name %>
                     </li>
-                    <li><i class="icofont icofont-thumbs-up"></i>02<span>Hits</span></li>
+                    <li>
+                      <% pre_like = @post.likes.find { |like| like.user_id ==current_user.id} %>
+                      <% if pre_like %>
+                        <%= button_to liked_path(pre_like: pre_like, post_id: @post.id), method: :delete, class: 'btn btn-small' do %>
+                          <i class="icofont icofont-thumbs-up"></i>
+                          <span><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Hit' : 'Hits'%></span>
+                        <% end %>
+                      <% else %>
+                        <%= button_to like_path(post_id: @post.id), method: :post, class: 'btn btn-small' do %>
+                          <i class="icofont icofont-thumbs-up"></i>
+                          <span><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Hit' : 'Hits'%></span>
+                        <% end %>
+                      <% end %>
+                    </li>
                     <% @comments=@post.comments.approved.count %>
                       <li><i class="icofont icofont-ui-chat"></i>
                         <%= @comments> 0 ? pluralize(@comments, 'Comment') : 'No Comments' %>

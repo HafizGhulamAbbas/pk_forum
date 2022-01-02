@@ -46,7 +46,7 @@
               <% end %>
               <ul class="blog-social">
                 <li><i class="icofont icofont-user"></i><%= truncate(@popular[0].moderator.full_name, length: 40) %></li>
-                <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
+                <li><i class="icofont icofont-thumbs-up"></i><%= @popular[0].likes.count %> <%= (@popular[0].likes.count) == 1 ? 'Hit' : 'Hits'%></li>
                 <% @comments = @popular[0].comments.approved.count %>
                 <li><i class="icofont icofont-ui-chat"></i><%= @comments> 0 ? pluralize(@comments, 'Comment') : 'No Comments' %></li>
               </ul>
@@ -75,7 +75,7 @@
                     <div class="blog-bottom-content">
                       <ul class="blog-social">
                         <li>by: <%= truncate(@popular[1].moderator.full_name, length: 25) %></li>
-                        <li>12 Hits</li>
+                        <li><%= @popular[1].likes.count %> <%= (@popular[0].likes.count) == 1 ? 'Hit' : 'Hits'%></li>
                       </ul>
                       <hr>
                       <%= link_to post_path(@popular[1].id) do %>
@@ -106,7 +106,7 @@
                     <div class="blog-bottom-content">
                       <ul class="blog-social">
                         <li>by: <%= truncate(@popular[2].moderator.full_name, length: 25) %></li>
-                        <li>5 Hits</li>
+                        <li><%= @popular[2].likes.count %> <%= (@popular[0].likes.count) == 1 ? 'Hit' : 'Hits'%></li>
                       </ul>
                       <hr>
                       <%= link_to post_path(@popular[2].id) do %>
@@ -127,9 +127,7 @@
             <%= link_to post_path(post.id) do %>
               <div class="blog-box blog-grid">
                 <div class="blog-wrraper">
-                  
                     <%= image_tag('blog-6.jpg', {class: 'img-fluid top-radius-blog'}) %>
-                  
                 </div>
                 <div class="blog-details-second">
                   <div class="blog-post-date"><span class="blg-month"><%= post.created_at.strftime("%b") %></span><span class="blg-date"><%= post.created_at.strftime("%d") %></span></div>
@@ -151,7 +149,7 @@
                     <ul class="sociyal-list">
                       <li><i class="fa fa-user-o"></i><%= truncate(post.moderator.full_name, length: 19) %></li>
                       <li><i class="fa fa-comments-o"></i><%= post.comments.approved.count %></li>
-                      <li><i class="fa fa-thumbs-o-up"></i>2 like</li>
+                      <li><i class="fa fa-thumbs-o-up"></i><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Hit' : 'Hits'%></li>
                     </ul>
                   </div>
                 </div>

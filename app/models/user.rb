@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :likes, dependent: :destroy
+
   PASSWORD_FORMAT = /\A
   (?=.{8,})          # Must contain 8 or more characters
   (?=.*\d)           # Must contain a digit

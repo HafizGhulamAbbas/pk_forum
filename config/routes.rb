@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'posts/:id/likes', to: 'likes#create', as: 'like'
+  delete 'likes/:id', to: 'likes#destroy', as: 'liked'
+
   resources :users, only: %i[new create]
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
