@@ -58,7 +58,7 @@
                     <li>
                       <%= time_ago(@post.created_at)%>
                     </li>
-                    <li><i class="icofont icofont-user"></i>Mark <span>Jecno </span></li>
+                    <li><i class="icofont icofont-user"></i><%= @post.moderator.full_name %></li>
                     <li><i class="icofont icofont-thumbs-up"></i>02<span>Hits</span></li>
                     <% @comments = @post.comments.approved.count %>
                     <li><i class="icofont icofont-ui-chat"></i> <%= @comments > 0 ? pluralize(@comments, 'Comment') : 'No Comments' %> </li>

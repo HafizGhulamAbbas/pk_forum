@@ -131,7 +131,7 @@
                 </div>
                 <div class="blog-details-second">
                   <div class="blog-post-date"><span class="blg-month">apr</span><span class="blg-date">10</span></div>
-                  <h6><%= truncate(post.title.titleize, length: 60) %></h6>
+                  <h6><%= truncate(post.title.titleize, length: 50) %></h6>
                   <span>
                     <p>
                       <%= truncate(post.content.html_safe, length: 60) %> 
@@ -141,7 +141,7 @@
                   <% end %>
                   <div class="detail-footer"> 
                     <ul class="sociyal-list">
-                      <li><i class="fa fa-user-o"></i>admin</li>
+                      <li><i class="fa fa-user-o"></i><%= truncate(post.moderator.full_name, length: 19) %></li>
                       <li><i class="fa fa-comments-o"></i>5</li>
                       <li><i class="fa fa-thumbs-o-up"></i>2 like</li>
                     </ul>

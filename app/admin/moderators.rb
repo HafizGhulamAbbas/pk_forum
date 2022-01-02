@@ -1,7 +1,7 @@
 ActiveAdmin.register Moderator do
   menu parent: 'Users'
 
-  permit_params :full_name, :user_name, :password_digest
+  permit_params :full_name, :user_name, :password, :password_digest
 
   index do
     selectable_column
