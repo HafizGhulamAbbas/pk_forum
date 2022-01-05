@@ -4,7 +4,7 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>MCQs</h3>
+          <h3><%= @pageTitle %></h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <%= link_to "Home" , home_path %>
@@ -12,7 +12,7 @@
             <li class="breadcrumb-item">
               <%= link_to "MCQs" , mcqs_path %>
             </li>
-            <li class="breadcrumb-item active">MCQs</li>
+            <li class="breadcrumb-item active"><%= @pageTitle %></li>
           </ol>
         </div>
       </div>
@@ -29,39 +29,39 @@
                 <div class="card-body">
                   <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <%= link_to "HOME", mcqs_path(q: "gk", pageTitle: "All MCQs"), class: "nav-link active", "aria-current": "page" %>
-                      <!-- <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a> -->
+                      <%= link_to "HOME", mcqs_path(pageTitle: "All MCQs"), class: "nav-link active", "aria-current": "page" %>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tabs" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">GK MCQs</a>
+                      <%= link_to "GK MCQs", mcqs_path(q: "gk", pageTitle: "General Knowledge MCQs"), class: "nav-link", "id": "profile-tabs", "data-bs-target": "tab", "role": "tab", "aria-controls": "profile", "aria-selected": "false" %>
+                      <a class="nav-link" id="profile-tabs" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"></a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Current Affairs</a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Pakistan Current Affairs</a>
-                        <a class="dropdown-item" href="#">World Current Affairs</a>
+                        <%= link_to "Pakistan Current Affairs", mcqs_path(q: "pakistan-current-affairs", pageTitle: "Pakistan Current Affairs MCQs"), class: "dropdown-item" %>
+                        <%= link_to "World Current Affairs", mcqs_path(q: "world-current-affairs", pageTitle: "World Current Affairs MCQs"), class: "dropdown-item" %>
                       </div>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Pak Study</a>
+                      <%= link_to "Pak Study", mcqs_path(q: "pakistan-study", pageTitle: "Pak Study MCQs"), class: "nav-link", "id": "profile-tabs", "data-bs-target": "tab", "role": "tab", "aria-controls": "profile", "aria-selected": "false" %>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Islamic Studies</a>
+                      <%= link_to "Islamic Studies", mcqs_path(q: "islamic-studies", pageTitle: "Islamic Studies MCQs"), class: "nav-link", "id": "profile-tabs", "data-bs-target": "tab", "role": "tab", "aria-controls": "profile", "aria-selected": "false" %>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Everyday Science</a>
+                      <%= link_to "Everyday Science", mcqs_path(q: "everyday-science", pageTitle: "Everyday Science MCQs"), class: "nav-link", "id": "profile-tabs", "data-bs-target": "tab", "role": "tab", "aria-controls": "profile", "aria-selected": "false" %>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Others</a>
+                      <a class="nav-link dropdown-toggle ac" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Others</a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">English MCQs</a>
-                        <a class="dropdown-item" href="#">Math MCQs</a>
-                        <a class="dropdown-item" href="#">Computer MCQs</a>
-                        <a class="dropdown-item" href="#">Pedagogy MCQs</a>
-                        <a class="dropdown-item" href="#">Physics MCQs</a>
-                        <a class="dropdown-item" href="#">Chemistry MCQs</a>
-                        <a class="dropdown-item" href="#">Bio MCQs</a>
-                        <a class="dropdown-item" href="#">Urdu MCQs</a>
+                        <%= link_to "English MCQs", mcqs_path(q: "english", pageTitle: "English MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Math MCQs", mcqs_path(q: "math", pageTitle: "Math MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Computer MCQs", mcqs_path(q: "computer", pageTitle: "Computer MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Pedagogy MCQs", mcqs_path(q: "pedagogy", pageTitle: "Pedagogy MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Physics MCQs", mcqs_path(q: "physics", pageTitle: "Physics MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Chemistry MCQs", mcqs_path(q: "chemistry", pageTitle: "Chemistry MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Bio MCQs", mcqs_path(q: "bio", pageTitle: "Bio MCQs"), class: "dropdown-item" %>
+                        <%= link_to "Urdu MCQs", mcqs_path(q: "urdu", pageTitle: "Urdu MCQs"), class: "dropdown-item" %>
                       </div>
                     </li>
                   </ul>
@@ -134,289 +134,280 @@
                 <div class="card">
                   <div class="card-header">
                     <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon8" aria-expanded="true" aria-controls="collapseicon8">Main MCQs Menu</button>
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon1" aria-expanded="true" aria-controls="collapseicon1">Main MCQs Menu</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon1" aria-labelledby="collapseicon1" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "English MCQs", mcqs_path(q: "english", pageTitle: "English MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Maths MCQs", mcqs_path(q: "math", pageTitle: "Maths MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "General Knowledge MCQs", mcqs_path(q: "gk", pageTitle: "General Knowledge MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Pakistan Current Affairs MCQs", mcqs_path(q: "pakistan-current-affairs", pageTitle: "Pakistan Current Affairs MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "World Current Affairs MCQs", mcqs_path(q: "world-current-affairs", pageTitle: "World Current Affairs MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Pak Study MCQs", mcqs_path(q: "pakistan-study", pageTitle: "Pak Study MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Islamic Studies MCQs", mcqs_path(q: "islamic-studies", pageTitle: "Islamic Studies MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Computer MCQs", mcqs_path(q: "computer", pageTitle: "Computer MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Everyday Science MCQs", mcqs_path(q: "everyday-science", pageTitle: "Everyday Science MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Physics MCQs", mcqs_path(q: "physics", pageTitle: "Physics MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Chemistry MCQs", mcqs_path(q: "chemistry", pageTitle: "Chemistry MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Biology MCQs", mcqs_path(q: "biology", pageTitle: "Biology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Pedagogy MCQs", mcqs_path(q: "pedagogy", pageTitle: "Pedagogy MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Urdu MCQs", mcqs_path(q: "urdu", pageTitle: "Urdu MCQs") %></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="true" aria-controls="collapseicon2">MANAGEMENT SCIENCES</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon2" aria-labelledby="collapseicon2" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Finance MCQs", mcqs_path(q: "finance", pageTitle: "Finance MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "HRM MCQs", mcqs_path(q: "hrm", pageTitle: "HRM MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Marketing MCQs", mcqs_path(q: "marketing", pageTitle: "Marketing MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Accounting MCQs", mcqs_path(q: "accounting", pageTitle: "Accounting MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Auditing MCQs", mcqs_path(q: "auditing", pageTitle: "Auditing MCQs") %></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon3" aria-expanded="true" aria-controls="collapseicon3">ENGINEERING MCQS</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon3" aria-labelledby="collapseicon3" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Electrical Engineering MCQs", mcqs_path(q: "electrical-engineering", pageTitle: "Electrical Engineering MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Civil Engineering MCQs", mcqs_path(q: "civil-engineering", pageTitle: "Civil Engineering MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Mechanical Engineering MCQs", mcqs_path(q: "mechanical-engineering", pageTitle: "Mechanical Engineering MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Chemical Engineering MCQs", mcqs_path(q: "chemical-engineering", pageTitle: "Chemical Engineering MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Software Engineering MCQs", mcqs_path(q: "software-engineering", pageTitle: "Software Engineering MCQs") %></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon4" aria-expanded="true" aria-controls="collapseicon4">MEDICAL SUBJECTS</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon4" aria-labelledby="collapseicon4" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Medical MCQs", mcqs_path(q: "medical", pageTitle: "Medical MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Biochemistry MCQs", mcqs_path(q: "biochemistry", pageTitle: "Biochemistry MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Dental Materials MCQs", mcqs_path(q: "dental-materials", pageTitle: "Dental Materials MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "General Anatomy MCQs", mcqs_path(q: "general-anatomy", pageTitle: "General Anatomy MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Microbiology MCQs", mcqs_path(q: "microbiology", pageTitle: "Microbiology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Oral Anatomy MCQs", mcqs_path(q: "oral-anatomy", pageTitle: "Oral Anatomy MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Oral Histology MCQs", mcqs_path(q: "oral-histology", pageTitle: "Oral Histology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Oral Pathology and Medicine MCQs", mcqs_path(q: "oral-pathology-and-medicine", pageTitle: "Oral Pathology and Medicine MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Physiology MCQs", mcqs_path(q: "physiology", pageTitle: "Physiology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Pathology MCQs", mcqs_path(q: "pathology", pageTitle: "Pathology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Pharmacology MCQs", mcqs_path(q: "pharmacology", pageTitle: "Pharmacology MCQs") %></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon5" aria-expanded="true" aria-controls="collapseicon5">OTHER SUBJECTS</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon5" aria-labelledby="collapseicon5" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Psychology MCQs", mcqs_path(q: "psychology", pageTitle: "Psychology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Agriculture MCQs", mcqs_path(q: "agriculture", pageTitle: "Agriculture MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Economics MCQs", mcqs_path(q: "economics", pageTitle: "Economics MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Sociology MCQs", mcqs_path(q: "sociology", pageTitle: "Sociology MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Statistics MCQs", mcqs_path(q: "statistics", pageTitle: "Statistics MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "English Literature MCQs", mcqs_path(q: "english-literature", pageTitle: "English Literature MCQs") %></span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block"><%= link_to "Judiciary And Law MCQs", mcqs_path(q: "judiciary-and-law", pageTitle: "Judiciary And Law MCQs") %></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon6" aria-expanded="true" aria-controls="collapseicon6">Online Quiz</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon6" aria-labelledby="collapseicon6" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <p>Coming Soon</p>
+                      <!-- <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon7" aria-expanded="true" aria-controls="collapseicon7">Past Papers</button>
+                    </h5>
+                  </div>
+                  <div class="collapse show" id="collapseicon7" aria-labelledby="collapseicon7" data-parent="#accordion">
+                    <div class="card-body social-list filter-cards-view">
+                      <p>Coming Soon</p>
+                      <!-- <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div>
+                      <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="p-0">
+                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon8" aria-expanded="true" aria-controls="collapseicon8">Department Specific MCQs</button>
                     </h5>
                   </div>
                   <div class="collapse show" id="collapseicon8" aria-labelledby="collapseicon8" data-parent="#accordion">
                     <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">English Mcqs</span></div>
+                      <p>Coming Soon</p>
+                      <!-- <div class="media">
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
                       </div>
                       <div class="media">
-                        <div class="media-body"><span class="d-block">Maths Mcqs</span></div>
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
                       </div>
                       <div class="media">
-                        <div class="media-body"><span class="d-block">General Knowledge MCQs</span></div>
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
                       </div>
                       <div class="media">
-                        <div class="media-body"><span class="d-block">Pakistan Current Affairs MCQs</span></div>
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
                       </div>
                       <div class="media">
-                        <div class="media-body"><span class="d-block">World Current Affairs MCQs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pak Study Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Islamic Studies Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Computer Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Everyday Science Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Physics Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Chemistry Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Biology Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy Mcqs</span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Bucky</span></div>
-                      </div>
+                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">MANAGEMENT SCIENCES</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Finance Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">HRM Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Marketing Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Accounting Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Auditing Mcqs </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">ENGINEERING MCQS</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Electrical Engineering Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Civil Engineering Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Mechanical Engineering Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Chemical Engineering Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Software Engineering Mcqs </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">MEDICAL SUBJECTS</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Medical Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Biochemistry </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Dental Materials </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">General Anatomy Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Microbiology </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Oral Anatomy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Oral Histology </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Oral Pathology and Medicine </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Physiology Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pathology </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pharmacology </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">OTHER SUBJECTS</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Psychology Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Agriculture Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Economics Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Sociology Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Statistics Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">English Literature Mcqs </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Judiciary And Law Mcqs </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">Online Quiz</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">Past Papers</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="p-0">
-                      <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="true" aria-controls="collapseicon8">Department Specific MCQs</button>
-                    </h5>
-                  </div>
-                  <div class="collapse show" id="collapseicon9" aria-labelledby="collapseicon8" data-parent="#accordion">
-                    <div class="card-body social-list filter-cards-view">
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                      <div class="media">
-                        <div class="media-body"><span class="d-block">Pedagogy </span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>

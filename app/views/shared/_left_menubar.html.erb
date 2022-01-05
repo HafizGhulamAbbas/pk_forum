@@ -159,32 +159,74 @@
             <h6>One Paper MCQs</h6>
           </div>
         </li>
-        <li class="dropdown"><a class="nav-link menu-title link-nav" href="file-manager.html"><i
-              data-feather="edit"></i><span>General Knowledge</span></a></li>
-        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-              data-feather="sliders"></i><span>Current Affairs</span></a>
+        <li class="dropdown">
+          <%= link_to mcqs_path(q: "gk", pageTitle: "General Knowledge MCQs"), class: "nav-link menu-title link-nav" do %>
+            <i data-feather="edit"></i>
+            <span>General Knowledge</span>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <%= link_to mcqs_path, class: "nav-link menu-title", href: "javascript:void(0)" do %>
+            <i data-feather="sliders"></i>
+            <span>Current Affairs</span>
+          <% end %>
           <ul class="nav-submenu menu-content">
-            <li><a href="form-validation.html">Pakistan Current Affairs</a></li>
-            <li><a href="base-input.html">World Current Affairs</a></li>
+            <li>
+              <%= link_to "Pakistan Current Affairs", mcqs_path(q: "pakistan-current-affairs", pageTitle: "Pakistan Current Affairs MCQs") %>
+            </li>
+            <li>
+              <%= link_to "World Current Affairs", mcqs_path(q: "world-current-affairs", pageTitle: "World Current Affairs MCQs") %>
+            </li>
           </ul>
         </li>
-        <li class="dropdown"><a class="nav-link menu-title link-nav" href="file-manager.html"><i
-              data-feather="folder"></i><span>Pakistan Study</span></a></li>
-        <li class="dropdown"><a class="nav-link menu-title link-nav" href="file-manager.html"><i
-              data-feather="folder-minus"></i><span>Islamic Studies</span></a></li>
-        <li class="dropdown"><a class="nav-link menu-title link-nav" href="file-manager.html"><i
-              data-feather="folder-plus"></i><span>Everyday Science</span></a></li>
-        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-              data-feather="layers"></i><span>Others</span></a>
+        <li class="dropdown">
+          <%= link_to mcqs_path(q: "pakistan-study", pageTitle: "Pakistan Study MCQs"), class: "nav-link menu-title link-nav" do %>
+            <i data-feather="folder"></i>
+            <span>Pakistan Study</span>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <%= link_to mcqs_path(q: "islamic-studies", pageTitle: "Islamic Studies MCQs"), class: "nav-link menu-title link-nav" do %>
+            <i data-feather="folder-minus"></i>
+            <span>Islamic Studies</span>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <%= link_to mcqs_path(q: "everyday-science", pageTitle: "Everyday Science MCQs"), class: "nav-link menu-title link-nav" do %>
+            <i data-feather="folder-plus"></i>
+            <span>Everyday Science</span>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <%= link_to mcqs_path, class: "nav-link menu-title", href: "javascript:void(0)" do %>
+            <i data-feather="layers"></i>
+            <span>Others</span>
+          <% end %>
           <ul class="nav-submenu menu-content">
-            <li><a href="datepicker.html">English Mcqs</a></li>
-            <li><a href="time-picker.html">Maths Mcqs</a></li>
-            <li><a href="datetimepicker.html">Computer Mcqs</a></li>
-            <li><a href="daterangepicker.html">Pedagogy Mcqs</a></li>
-            <li><a href="touchspin.html">Physics Mcqs</a></li>
-            <li><a href="select2.html">Chemistry Mcqs</a></li>
-            <li><a href="switch.html">Bio Mcqs</a></li>
-            <li><a href="typeahead.html">Urdu Mcqs</a></li>
+            <li>
+              <%= link_to "English Mcqs" , mcqs_path(q: "english", pageTitle: "English MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Maths Mcqs" , mcqs_path(q: "math", pageTitle: "Mathematics MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Computer Mcqs" , mcqs_path(q: "computer", pageTitle: "Computer MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Pedagogy Mcqs" , mcqs_path(q: "pedagogy", pageTitle: "Pedagogy MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Physics Mcqs" , mcqs_path(q: "physics", pageTitle: "Physics MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Chemistry Mcqs" , mcqs_path(q: "chemistry", pageTitle: "Chemistry MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Bio Mcqs" , mcqs_path(q: "bio", pageTitle: "Biology MCQs") %>
+            </li>
+            <li>
+              <%= link_to "Urdu Mcqs" , mcqs_path(q: "urdu", pageTitle: "Urdu MCQs") %>
+            </li>
           </ul>
         </li>
 

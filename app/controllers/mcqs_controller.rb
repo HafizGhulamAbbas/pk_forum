@@ -14,6 +14,8 @@ class McqsController < InheritedResources::Base
 
     if params[:pageTitle].present?
       @pageTitle = params[:pageTitle]
+    else
+      @pageTitle = "All MCQs"
     end
   end
 
