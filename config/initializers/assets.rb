@@ -42,6 +42,7 @@ Rails.application.config.assets.precompile += %w(
   style.css 
   themify.css 
   vector-map.css 
+  sweetalert2.css
 )
 Rails.application.config.assets.precompile += %w( 
   landing-jquery-3.5.1.min.js 
@@ -91,7 +92,8 @@ Rails.application.config.assets.precompile += %w(
   prism.min.js 
   script.js 
   sidebar-menu.js 
-  stock-prices.js
+  stock-prices.js 
+  sweetalert.min.js 
 )
 Rails.application.config.assets.precompile += %w( 
   landing-logo.png 
@@ -186,4 +188,6 @@ Rails.application.config.assets.precompile += %w(
   blog-14.jpg 
   blog-comment.jpg 
   blog-single.jpg 
+  signup.jpg 
+  bg-profile.jpg 
 )
