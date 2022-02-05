@@ -18,8 +18,10 @@ Rails.application.routes.draw do
 
   post 'posts/:id/likes', to: 'likes#create', as: 'like'
   delete 'likes/:id', to: 'likes#destroy', as: 'liked'
+  
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[index new create edit update]
+  get 'users', to: 'users#index'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'

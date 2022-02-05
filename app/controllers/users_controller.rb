@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorized, only: [:new, :create]
+      skip_before_action :authorized, only: [:new, :create]
+  
+   def index
+        if current_user.has_role?(:superadmin)
+            @users = User.all
+            
+        else
+            redirect_to root_path
+        end
+    end
+
 
   def new
     @user = User.new
@@ -55,13 +65,14 @@ class UsersController < ApplicationController
 
   private
 
+
   def user_params
     if request.xhr?
       # params.require(:user).permit(:first_name, :last_name, :email, :zipcode, :advertising_id, :device_type, :udid, :provider, :token)
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :phone)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :phone, {role_ids: []})
     else
       # params.permit(:first_name, :last_name, :email, :zipcode, :advertising_id, :device_type, :udid, :provider, :token)
-      params.permit(:first_name, :last_name, :email, :password, :phone)
+      params.permit(:first_name, :last_name, :email, :password, :phone, {role_ids: []})
     end
   end
 end

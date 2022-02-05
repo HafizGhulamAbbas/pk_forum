@@ -10,18 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_132032) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2022_02_05_093943) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.string "author_type"
-    t.bigint "author_id"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -32,8 +29,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -59,8 +56,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
@@ -70,8 +67,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
   create_table "comments", force: :cascade do |t|
     t.text "message"
     t.boolean "status", default: true
-    t.bigint "post_id"
-    t.bigint "visitor_id"
+    t.integer "post_id"
+    t.integer "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -86,8 +83,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "user_id"
+    t.integer "post_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -112,7 +109,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.text "content"
     t.boolean "status", default: true, null: false
     t.boolean "boolean", default: true, null: false
-    t.bigint "visitor_id"
+    t.integer "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["visitor_id"], name: "index_messages_on_visitor_id"
@@ -128,15 +125,15 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "notifiable_type"
-    t.bigint "notifiable_id"
+    t.integer "notifiable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "tag_id"
+    t.integer "post_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_post_tags_on_post_id"
@@ -148,12 +145,23 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.text "content"
     t.boolean "publish"
     t.integer "comments_count"
-    t.bigint "moderator_id"
+    t.integer "moderator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "subject_id"
+    t.integer "subject_id"
     t.index ["moderator_id"], name: "index_posts_on_moderator_id"
     t.index ["subject_id"], name: "index_posts_on_subject_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -171,7 +179,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.integer "marks"
     t.boolean "compulsory"
     t.integer "code_no"
-    t.bigint "group_id"
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_subjects_on_group_id"
@@ -199,6 +207,14 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
   create_table "visitors", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -206,15 +222,4 @@ ActiveRecord::Schema.define(version: 2022_01_02_132032) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "visitors"
-  add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users"
-  add_foreign_key "messages", "visitors"
-  add_foreign_key "post_tags", "posts"
-  add_foreign_key "post_tags", "tags"
-  add_foreign_key "posts", "moderators"
-  add_foreign_key "posts", "subjects"
-  add_foreign_key "subjects", "groups"
 end

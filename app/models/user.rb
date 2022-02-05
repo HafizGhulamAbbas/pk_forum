@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
 
   has_many :likes, dependent: :destroy
 
@@ -67,4 +68,17 @@ class User < ApplicationRecord
       user.udid = 'eAOnmT3xxn8:APA91bF7Ch4URpZexSQJ-cC1dlIhG6Aje89SnzJn1f3DlcMn2GJ7daYXCmv1S0ZQzm2iyuSJURDsjqFSA-VT33NFd-eFAujsq8d2bKzISsJ_nVWxSqe93asieD8MrZ91yP5mzeVh7Hv-d-EpYEceGsLC3soO2blZpg'
     end
   end
+  
+  after_create :assign_default_role
+
+        def assign_default_role
+         if User.count == 1
+          self.add_role(:superadmin) if self.roles.blank?
+          self.add_role(:admin)
+          self.add_role(:moderator)
+          self.add_role(:user)
+         else 
+          self.add_role(:user) if self.roles.blank?
+         end
+        end
 end

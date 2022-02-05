@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu parent: 'Users'
-  permit_params :first_name, :last_name, :email, :password, :password_confirmation, :phone
+  permit_params :first_name, :last_name, :email, :password, :password_confirmation, :phone, role_ids: []
 
   index do
     selectable_column
@@ -22,9 +22,10 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :last_name
       f.input :email
-      f.input :password
-      f.input :password_confirmation
+      f.input :password if f.object.new_record?
+      f.input :password_confirmation if f.object.new_record?
       f.input :phone
+      f.input :roles, as: :check_boxes
     end
     f.actions
   end
