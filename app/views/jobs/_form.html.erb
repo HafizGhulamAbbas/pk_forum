@@ -1,0 +1,92 @@
+<div class="page-body">
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 col-xl-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-header pb-0">
+                        <h5>Tell Us About The Job</h5>
+                      </div>
+                      <div class="card-body">
+                        <%= form_with(model: job, local: true) do |form| %>
+                           <% if job.errors.any? %>
+                             <div id="error_explanation">
+                               <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+                              <ul>
+                           <% job.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                   </div>
+                    <% end %>
+                        <form class="theme-form mega-form">
+                          <h6>Location</h6>
+                          <div class="mb-3">
+                            <label class="col-form-label">Province</label>
+                            <%= form.text_field :province, class: 'form-control' %>
+                          </div>
+                          <div class="mb-3">
+                            <label class="col-form-label">District</label>
+                            <%= form.text_field :district, class: 'form-control' %>
+                          </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="col-form-label">Contact Number</label>
+                            <%= form.text_field :department, class: 'form-control' %>
+                          </div>
+                          <hr class="mt-4 mb-4">
+                          <h6>Job Information</h6>
+                          <div class="mb-3">
+                            <label class="col-form-label">Description</label>
+                           <%= form.text_field :description, class: 'form-control' %>
+                          </div>
+                          <div class="mb-3">
+                            <label class="col-form-label">Website</label>
+                            <%= form.text_field :url, class: 'form-control' %>
+                          </div>
+                          <div class="mb-3">
+                            <label class="col-form-label">Eligitibility</label>
+                            <%= form.text_field :eligibility, class: 'form-control' %>
+                          </div>
+                          <div class="mb-3">
+                            <label class="col-form-label">Qualification</label>
+                            <%= form.text_field :qualification, class: 'form-control' %>
+                          </div>
+                           <div class="mb-3">
+                            <label class="col-form-label">Salary</label>
+                            <%= form.text_field :salary, class: 'form-control' %>
+                          </div>
+                        </form>
+                        <hr class="mt-4 mb-4">
+                        <h6 class="pb-3 mb-0">Billing Information</h6>
+                        <form class="form-space theme-form row">
+                          <div class="col-auto">
+                            <%= form.date_field :opendate, class: 'form-control' %>
+                          </div>
+                          <div class="col-auto">
+                            <%= form.text_field :closedate, class: 'form-control' %>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="card-footer">
+                        <%= form.submit "Save Job", class: 'btn btn-primary' %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+
+
+
+
+
+
+

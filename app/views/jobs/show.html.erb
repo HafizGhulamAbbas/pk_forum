@@ -1,0 +1,51 @@
+<div class="page-body">
+          
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-12 xl-60 box-col-12">
+                <div class="card">
+                  <div class="job-search">
+                    <div class="card-body">
+                      <div class="media">
+                        <div class="media-body">
+                          <h6 class="f-w-600"><a href="javascript:void(0)"><%= @job.description %>                                    </a></h6>
+                          <p><%= @job.province %> - <%= @job.district %></p>
+                          <ul class="rating">
+                                 <%= @job.salary %>                   
+                          </i></li>
+                          </ul><a class="btn btn-primary btn-sm job-apply-btn" href="#"><%= @job.url %></a>
+                        </div>
+                      </div>
+                      <div class="job-description">
+                        <h6>Job Eligibility</h6>
+                        <p class="text-start">
+                        <%= @job.eligibility %>
+                        </p>
+                        <!-- <p>Front-end web designers combine design, programming, writing and organizational skills in their work. They help shape the vision for a company's online content.</p>-->
+                      </div>
+                      <div class="job-description">
+                        <h6>Qualifications </h6>
+                        <ul>
+                         <%= @job.qualification %>
+                        </ul>
+                      </div>
+                      
+                      <div class="job-description">
+                        <h6>Availability Status</h6>
+                        <ul>
+                          <li><%= @job.opendate %></li>
+                          <li> <%= @job.closedate %></li>
+                        </ul>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>

@@ -238,8 +238,8 @@
             <h6>JOBS</h6>
           </div>
         </li>
-        <li class="dropdown"><a class="nav-link menu-title link-nav" href="file-manager.html"><i
-              data-feather="git-pull-request"></i><span>Federal Jobs</span></a></li>
+        <%= link_to "Jobs", jobs_path, class: 'dropdown nav-link menu-title link-nav' %>
+        <%= link_to "Add Job", new_job_path, class: 'dropdown nav-link menu-title link-nav' %>
         <li class="dropdown"><a class="nav-link menu-title link-nav" href="kanban.html"><i
               data-feather="monitor"></i><span>Punjab Jobs</span></a></li>
         <li class="dropdown"><a class="nav-link menu-title link-nav" href="bookmark.html"><i

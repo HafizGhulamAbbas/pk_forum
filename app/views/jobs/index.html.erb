@@ -1,0 +1,50 @@
+<div class="page-body">
+
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5>Jobs</h5> | <%= link_to 'New Job', new_job_path %>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">URL</th>
+                          <th scope="col">District</th>
+                          <th scope="col">Opendate</th>
+                          <th scope="col">Closedate</th>
+                          <th scope="col">Salary</th>
+                          <th scope="col">Qualification</th>
+                        </tr>
+                      </thead>
+                       <% @jobs.each do |job| %>
+                      <tbody>
+                        <tr>
+                          <td><%= job.url %></td>
+                          <td><%= job.district %></td>
+                          <td><%= job.opendate %></td>
+                          <td><%= job.closedate %></td>
+                          <td><%= job.salary %></td>
+                          <td><%= job.qualification %></td>
+                          <td><%= link_to 'View', job %></td>
+                          <td><%= link_to 'Edit', edit_job_path(job) %></td>
+                          <td><%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        </tr>
+                       
+                      </tbody>
+                      <% end %>
+                    </table>
+                  </div>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+
+
+

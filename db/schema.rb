@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_093943) do
+ActiveRecord::Schema.define(version: 2022_02_12_091702) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -78,6 +78,22 @@ ActiveRecord::Schema.define(version: 2022_02_05_093943) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "max_marks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "user_id"
+    t.string "province"
+    t.string "department"
+    t.string "district"
+    t.date "opendate"
+    t.date "closedate"
+    t.string "url"
+    t.string "qualification"
+    t.string "salary"
+    t.string "eligibility"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
