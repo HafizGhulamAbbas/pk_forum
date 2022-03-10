@@ -8,12 +8,14 @@
                   <div class="card-header">
                     <h5>Jobs</h5> | <%= link_to 'New Job', new_job_path %>
                   </div>
+                 <%= render 'jobs/search' %>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
+                        <th scope="col"><%= sort_link(@q, :title, 'Job Title', default_order: :desc) %></th>
                           <th scope="col">URL</th>
-                          <th scope="col">District</th>
+                          <th scope="col"><%= sort_link(@q, :district, 'District', default_order: :desc) %></th>
                           <th scope="col">Opendate</th>
                           <th scope="col">Closedate</th>
                           <th scope="col">Salary</th>
@@ -23,6 +25,7 @@
                        <% @jobs.each do |job| %>
                       <tbody>
                         <tr>
+                        <td><%= job.title %></td>
                           <td><%= job.url %></td>
                           <td><%= job.district %></td>
                           <td><%= job.opendate %></td>

@@ -68,8 +68,7 @@
                     <!-- <%= label_tag :email%> -->
                     <label>Email Address</label>
                     <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                        <!-- <%= text_field_tag :email, placeholder: "example@gmail.com", :required => true, class: "form-control" %> -->
-                        <input class="form-control" type="email" required="" placeholder="example@gmail.com">
+                        <%= text_field_tag :email, placeholder: "example@gmail.com", :required => true, class: "form-control" %> 
                         <div class="invalid-tooltip">Please enter proper email.</div>
                     </div>
                 </div>
@@ -78,10 +77,8 @@
                     <!-- <%= label_tag :password%> -->
                     <label>Password</label>
                     <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                    <!-- <%= password_field_tag :password, class: "form-control", :required => true %> -->
-                      <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
-                      <div class="invalid-tooltip">Please enter password.</div>
-                      <div class="show-hide"><span class="show"></span></div>
+                    <%= password_field_tag :password, class: "form-control", :required => true %> 
+                      
                     </div>
                 </div>
 
@@ -93,8 +90,7 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- <%= submit_tag "Sign in", class: "btn btn-primary btn-block" %> -->
-                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                    <%= submit_tag "Sign in", class: "btn btn-primary btn-block" %>
                 </div>
 
 

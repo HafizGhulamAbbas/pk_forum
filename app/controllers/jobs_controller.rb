@@ -1,11 +1,13 @@
 class JobsController < ApplicationController
   
-  before_action :authenticate_user!, except: [:new]
+  #before_action :authenticate_user!, except: [:new]
   def index
-     @jobs = Job.all
+    @q = Job.ransack(params[:q])
+    @jobs = @q.result(distinct: true)
   end
 
   def show
+    @job = Job.find(params[:id])
   end
 
 
@@ -21,7 +23,7 @@ class JobsController < ApplicationController
     @job.user_id = current_user.id
     respond_to do |format|
       if @job.save
-        format.html { redirect_to root_path, notice: "Job was successfully submitted." }
+        format.html { redirect_to @job, notice: "Job was successfully submitted." }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,7 +60,7 @@ class JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:user_id, :province, :department, :district, :opendate, :closedate, :url, :qualification, :salary, :eligibility, :description)
+      params.require(:job).permit(:title, :user_id, :province, :department, :district, :opendate, :closedate, :url, :qualification, :salary, :eligibility, :description)
     end
 
 end

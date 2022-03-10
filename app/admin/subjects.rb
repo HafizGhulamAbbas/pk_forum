@@ -20,6 +20,16 @@ ActiveAdmin.register Subject do
     f.inputs do
       f.input :name
       f.input :marks
+      f.input :ppapers, as: :quill_editor
+      f.input :syllabus, as: :quill_editor
+      f.input :recbooks, as: :quill_editor
+      f.input :eremarks, as: :quill_editor
+      f.input :comments, as: :quill_editor
+      f.input :video, as: :quill_editor
+      f.input :books, as: :quill_editor
+      f.input :notes, as: :quill_editor
+      f.input :relinks, as: :quill_editor
+      f.input :mcqs, as: :quill_editor
       f.input :code_no
       f.input :compulsory
       f.input :group_id, :as => :select, :collection => Group.all.collect {|group| [group.name, group.id]}

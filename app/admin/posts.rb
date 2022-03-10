@@ -12,6 +12,7 @@ ActiveAdmin.register Post do
   index do
     selectable_column
     id_column
+    column :image
     column :title
     column :content do |post_content|
       truncate(post_content.content, length: 80)
@@ -29,6 +30,7 @@ ActiveAdmin.register Post do
   form do |f|
     f.inputs do
       f.input :title
+      f.input :images, as: :file, required: false
       f.input :content, as: :quill_editor
       unless object.new_record?
         plugin_opts = { image_uploader: { server_url: upload_admin_post_path(object.id), field_name: 'file_upload' } }
@@ -44,6 +46,7 @@ ActiveAdmin.register Post do
 
   show do
     attributes_table do
+      row :images
       row :id
       row :title
       row :content

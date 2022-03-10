@@ -9,21 +9,23 @@
                       <div class="card-header pb-0">
                         <h5>Tell Us About The Job</h5>
                       </div>
-                      <div class="card-body">
+                      <div class="card-body">                       
                         <%= form_with(model: job, local: true) do |form| %>
-                           <% if job.errors.any? %>
-                             <div id="error_explanation">
-                               <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+                          <% if job.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
-                              <ul>
-                           <% job.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                      </ul>
-                   </div>
-                    <% end %>
-                        <form class="theme-form mega-form">
-                          <h6>Location</h6>
+                             <ul>
+                          <% job.errors.full_messages.each do |message| %>
+                       <li><%= message %></li>
+                     <% end %>
+                     </ul>
+                  </div>
+                   <% end %>
+                        <div class="mb-3">
+                          <label class="col-form-label">Job Title</label>
+                          <%= form.text_field :title, class: 'form-control' %>
+                        </div>
                           <div class="mb-3">
                             <label class="col-form-label">Province</label>
                             <%= form.text_field :province, class: 'form-control' %>
@@ -31,7 +33,6 @@
                           <div class="mb-3">
                             <label class="col-form-label">District</label>
                             <%= form.text_field :district, class: 'form-control' %>
-                          </div>
                           </div>
                           <div class="mb-3">
                             <label class="col-form-label">Contact Number</label>
@@ -41,7 +42,7 @@
                           <h6>Job Information</h6>
                           <div class="mb-3">
                             <label class="col-form-label">Description</label>
-                           <%= form.text_field :description, class: 'form-control' %>
+                           <%= form.text_area :description, class: 'form-control' %>
                           </div>
                           <div class="mb-3">
                             <label class="col-form-label">Website</label>
@@ -53,23 +54,22 @@
                           </div>
                           <div class="mb-3">
                             <label class="col-form-label">Qualification</label>
-                            <%= form.text_field :qualification, class: 'form-control' %>
+                            <%= form.text_area :qualification, class: 'form-control' %>
                           </div>
                            <div class="mb-3">
                             <label class="col-form-label">Salary</label>
                             <%= form.text_field :salary, class: 'form-control' %>
                           </div>
-                        </form>
                         <hr class="mt-4 mb-4">
-                        <h6 class="pb-3 mb-0">Billing Information</h6>
-                        <form class="form-space theme-form row">
+                        <h6 class="pb-3 mb-0">Job Availability</h6>
+                        <div class="form-space theme-form row">
                           <div class="col-auto">
                             <%= form.date_field :opendate, class: 'form-control' %>
                           </div>
                           <div class="col-auto">
-                            <%= form.text_field :closedate, class: 'form-control' %>
+                            <%= form.date_field :closedate, class: 'form-control' %>
                           </div>
-                        </form>
+                        </div>
                       </div>
                       <div class="card-footer">
                         <%= form.submit "Save Job", class: 'btn btn-primary' %>

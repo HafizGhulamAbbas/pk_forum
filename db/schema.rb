@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_091702) do
+ActiveRecord::Schema.define(version: 2022_03_09_133449) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2022_02_12_091702) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -198,6 +199,16 @@ ActiveRecord::Schema.define(version: 2022_02_12_091702) do
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "syllabus"
+    t.text "recbooks"
+    t.text "ppapers"
+    t.text "eremarks"
+    t.text "comments"
+    t.text "video"
+    t.text "books"
+    t.text "notes"
+    t.text "relinks"
+    t.text "mcqs"
     t.index ["group_id"], name: "index_subjects_on_group_id"
   end
 

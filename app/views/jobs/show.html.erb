@@ -9,7 +9,7 @@
                     <div class="card-body">
                       <div class="media">
                         <div class="media-body">
-                          <h6 class="f-w-600"><a href="javascript:void(0)"><%= @job.description %>                                    </a></h6>
+                          <h6 class="f-w-600"><%= @job.title %>                                    </a></h6>
                           <p><%= @job.province %> - <%= @job.district %></p>
                           <ul class="rating">
                                  <%= @job.salary %>                   
@@ -22,7 +22,7 @@
                         <p class="text-start">
                         <%= @job.eligibility %>
                         </p>
-                        <!-- <p>Front-end web designers combine design, programming, writing and organizational skills in their work. They help shape the vision for a company's online content.</p>-->
+                        <p><%= @job.description %>.</p>
                       </div>
                       <div class="job-description">
                         <h6>Qualifications </h6>
