@@ -1,9 +1,12 @@
 class JobsController < ApplicationController
   
   #before_action :authenticate_user!, except: [:new]
+  skip_before_action :authorized, only: [:index, :show, :new]
+
   def index
     @q = Job.ransack(params[:q])
-    @jobs = @q.result(distinct: true)
+    @jobs = @q.result(distinct: true).page(params[:page]).per(Setting.post_per_page)
+
   end
 
   def show

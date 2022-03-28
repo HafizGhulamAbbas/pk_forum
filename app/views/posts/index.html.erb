@@ -37,11 +37,11 @@
       <div class="col-xxl-6 set-col-12 box-col-12 xl-40">
         <div class="card">
           <div class="blog-box blog-shadow">
-          <% if @post.images.attached? %>
-            <%= image_tag @post.images, class: 'img-fluid bg-img-cover'%>  
-            <% else %>
+          <%# if @post.images.attached? %>
+            <%#= image_tag @post.images, class: 'img-fluid bg-img-cover'%>  
+            <%# else %>
             <%= image_tag('blog.jpg', {class: 'img-fluid bg-img-cover'}) %>
-            <% end %>
+            <%# end %>
             <div class="blog-details">
               <p><%= @popular[0].created_at.strftime("%m %B %Y") %></p>
               <!-- <p>25 July 2018</p> -->

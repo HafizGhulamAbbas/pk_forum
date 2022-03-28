@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_03_09_133449) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -67,8 +70,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
   create_table "comments", force: :cascade do |t|
     t.text "message"
     t.boolean "status", default: true
-    t.integer "post_id"
-    t.integer "visitor_id"
+    t.bigint "post_id"
+    t.bigint "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -100,8 +103,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "user_id"
+    t.bigint "post_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -126,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
     t.text "content"
     t.boolean "status", default: true, null: false
     t.boolean "boolean", default: true, null: false
-    t.integer "visitor_id"
+    t.bigint "visitor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["visitor_id"], name: "index_messages_on_visitor_id"
@@ -142,15 +145,15 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "notifiable_type"
-    t.integer "notifiable_id"
+    t.bigint "notifiable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
+    t.bigint "post_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_post_tags_on_post_id"
@@ -162,10 +165,10 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
     t.text "content"
     t.boolean "publish"
     t.integer "comments_count"
-    t.integer "moderator_id"
+    t.bigint "moderator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.index ["moderator_id"], name: "index_posts_on_moderator_id"
     t.index ["subject_id"], name: "index_posts_on_subject_id"
   end
@@ -173,7 +176,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -196,7 +199,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
     t.integer "marks"
     t.boolean "compulsory"
     t.integer "code_no"
-    t.integer "group_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "syllabus"
@@ -235,8 +238,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
@@ -249,4 +252,15 @@ ActiveRecord::Schema.define(version: 2022_03_09_133449) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "visitors"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
+  add_foreign_key "messages", "visitors"
+  add_foreign_key "post_tags", "posts"
+  add_foreign_key "post_tags", "tags"
+  add_foreign_key "posts", "moderators"
+  add_foreign_key "posts", "subjects"
+  add_foreign_key "subjects", "groups"
 end

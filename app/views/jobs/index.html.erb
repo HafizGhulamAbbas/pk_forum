@@ -1,53 +1,51 @@
 <div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Job Listing</h3>
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", home_path %></li>
+            <li class="breadcrumb-item active">Jobs</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
 
-          <!-- Container-fluid starts-->
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h5>Jobs</h5> | <%= link_to 'New Job', new_job_path %>
-                  </div>
-                 <%= render 'jobs/search' %>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                        <th scope="col"><%= sort_link(@q, :title, 'Job Title', default_order: :desc) %></th>
-                          <th scope="col">URL</th>
-                          <th scope="col"><%= sort_link(@q, :district, 'District', default_order: :desc) %></th>
-                          <th scope="col">Opendate</th>
-                          <th scope="col">Closedate</th>
-                          <th scope="col">Salary</th>
-                          <th scope="col">Qualification</th>
-                        </tr>
-                      </thead>
-                       <% @jobs.each do |job| %>
-                      <tbody>
-                        <tr>
-                        <td><%= job.title %></td>
-                          <td><%= job.url %></td>
-                          <td><%= job.district %></td>
-                          <td><%= job.opendate %></td>
-                          <td><%= job.closedate %></td>
-                          <td><%= job.salary %></td>
-                          <td><%= job.qualification %></td>
-                          <td><%= link_to 'View', job %></td>
-                          <td><%= link_to 'Edit', edit_job_path(job) %></td>
-                          <td><%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        </tr>
-                       
-                      </tbody>
-                      <% end %>
-                    </table>
+  <div class="container-fluid">
+    <div class="row">
+      <%= render 'jobs/search' %>
+    </div>
+    </br>
+    <div class="row">
+      <div class="col-xl-12 xl-100 box-col-12">
+        <% @jobs.each do |job| %>
+          <div class="card">
+            <div class="job-search">
+              <div class="card-body">
+                <div class="media">
+                <%= image_tag('1.jpg', {class: 'img-40 img-fluid m-r-20'}) %>
+                  <div class="media-body">
+                    <h6 class="f-w-600"><a href="<%= job_path(job) %>"><%= job.title %></a><span class="badge badge-primary pull-right">New</span></h6>
+                    <p><%= job.province %> , <%= job.district %> </p>
+                    <p> | <b>Advertisement Date:</b> <%= job.opendate.strftime("%d %B %Y") %> | <b>Closing Date:</b> <%= job.closedate.strftime("%d %B %Y") %> </p>
                   </div>
                 </div>
-              </div>
-                </div>
+                <p> <%= truncate(job.description.titleize, length: 250) %> </p>
               </div>
             </div>
           </div>
-          <!-- Container-fluid Ends-->
+        
+        <% end %>
 
 
-
+        <div class="pagination pagination-lg pagination-primary p-0 m-0 m-b-20" style="margin-top: 3em; justify-content: center;">
+          <%= paginate @jobs %>
+        </div>
+        </div>
+      </div>
+    </div>
+  <!-- Container-fluid Ends-->
+  </div>

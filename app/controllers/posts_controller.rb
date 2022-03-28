@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  skip_before_action :authorized, only: [:index]
+  skip_before_action :authorized, only: [:index, :show]
   after_action :clear_sessions, only: [:show]
 
   def index

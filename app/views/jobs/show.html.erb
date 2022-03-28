@@ -1,48 +1,189 @@
 <div class="page-body">
-          
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Job Details</h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">
+                      <%= link_to "Jobs", jobs_path %>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <%= truncate(@job.title.titleize, length: 50, separator: ' ' ) %>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Container-fluid starts-->
           <div class="container-fluid">
             <div class="row">
-              <div class="col-xl-12 xl-60 box-col-12">
+              
+              <div class="col-xl-12 xl-100 box-col-12">
                 <div class="card">
                   <div class="job-search">
                     <div class="card-body">
                       <div class="media">
+                      <%= image_tag('1.jpg', {class: 'img-40 img-fluid m-r-20'}) %>
                         <div class="media-body">
-                          <h6 class="f-w-600"><%= @job.title %>                                    </a></h6>
-                          <p><%= @job.province %> - <%= @job.district %></p>
-                          <ul class="rating">
-                                 <%= @job.salary %>                   
-                          </i></li>
-                          </ul><a class="btn btn-primary btn-sm job-apply-btn" href="#"><%= @job.url %></a>
+                          <h6 class="f-w-600"><a href="javascript:void(0)"><%= @job.title%></a></h6>
+                          <p><%= @job.province %> , <%= @job.district %> </p>
+                          <p> | <b>Department:</b> <%= @job.department %> </p>
+                          <%= link_to "Apply for this job", @job.url, class: "btn btn-primary btn-sm job-apply-btn", target: :_blank %>
+                          <a class="" href="job-apply.html"></a>
                         </div>
                       </div>
                       <div class="job-description">
-                        <h6>Job Eligibility</h6>
-                        <p class="text-start">
-                        <%= @job.eligibility %>
-                        </p>
-                        <p><%= @job.description %>.</p>
+                        <h6>Job Description</h6>
+                        <p class="text-start"> <%= @job.description.html_safe %> </p>
+                      </div>
+                      <div class="job-description">
+                        <h6>Department</h6>
+                        <p class="text-start"> <%= @job.department %> </p>
                       </div>
                       <div class="job-description">
                         <h6>Qualifications </h6>
-                        <ul>
-                         <%= @job.qualification %>
-                        </ul>
+                        <p> <%= @job.qualification.html_safe %> </p>
                       </div>
-                      
                       <div class="job-description">
-                        <h6>Availability Status</h6>
-                        <ul>
-                          <li><%= @job.opendate %></li>
-                          <li> <%= @job.closedate %></li>
-                        </ul>
+                        <h6>Eligibilty Criteria</h6>
+                        <p> <%= @job.eligibility.html_safe %> </p>
                       </div>
-                     
+                      <div class="job-description">
+                        <h6>Salary</h6>
+                        <p> <%= @job.salary %> </p>
+                      </div>
+                      <div class="job-description">
+                        <h6>Advertisement Date</h6>
+                        <p> <%= @job.opendate.strftime("%m %B %Y") %> </p>
+                      </div>
+                      <div class="job-description">
+                        <h6>Last Date to Apply</h6>
+                        <p> <%= @job.closedate.strftime("%m %B %Y") %> </p>
+                      </div>
+                      <div class="job-description">
+                        <button class="btn btn-primary" type="button"><span><i class="fa fa-check"></i></span> Save this job</button>
+                        <button class="btn btn-primary" type="button"><span><i class="fa fa-share-alt"></i></span> Share</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-               
+                <div class="header-faq">
+                  <h6 class="mb-0 f-w-600">Similar jobs</h6>
+                </div>
+                <div class="row">
+                  <div class="col-xl-6 xl-100 box-col-12">
+                    <div class="card">
+                      <div class="job-search">
+                        <div class="card-body">
+                          <div class="media"><img class="img-40 img-fluid m-r-20" src="assets/images/job-search/2.jpg" alt="">
+                            <div class="media-body">
+                              <h6 class="f-w-700"><a href="javascript:void(0)">React/React Native Developer</a><span class="badge badge-primary pull-right">New</span></h6>
+                              <p>San <span>Diego, CA</span></p>
+                              <ul class="rating">
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star-o font-warning"></i></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p>Ideally 2+ years experience with React. Bonus points if you have React Native experience. This is an incredibly exciting opportunity to gain commercial , Professional experience of React Native and other front end frameworks. Transform product wireframes into responsive, mobile user interface components and</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 xl-100 box-col-12">
+                    <div class="card">
+                      <div class="job-search">
+                        <div class="card-body">
+                          <div class="media"><img class="img-40 img-fluid m-r-20" src="assets/images/job-search/4.jpg" alt="">
+                            <div class="media-body">
+                              <h6 class="f-w-700"><a href="javascript:void(0)">Front end web developer</a><span class="pull-right">3 days ago</span></h6>
+                              <p>Cisco <span>Lelystad, Netherlands </span></p>
+                              <ul class="rating">
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star-o font-warning"></i></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p>Insipidity the sufficient discretion imprudence resolution sir him decisively. Proceed how any engaged visitor. Explained propriety off out perpetual his you. Feel sold off felt nay rose met you. We so entreaties cultivated astonished is. Was sister for few longer mrs sudden talent become.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 xl-100 box-col-12">
+                    <div class="card">
+                      <div class="job-search">
+                        <div class="card-body">
+                          <div class="media"><img class="img-40 img-fluid m-r-20" src="assets/images/job-search/5.jpg" alt="">
+                            <div class="media-body">
+                              <h6 class="f-w-700"><a href="javascript:void(0)">Graphic designer</a><span class="pull-right">3 days ago</span></h6>
+                              <p>Infosys <span>Lelystad, Netherlands </span></p>
+                              <ul class="rating">
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star-o font-warning"></i></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p>Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted. Contrasted interested eat alteration pianoforte sympathize was.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 xl-100 box-col-12">
+                    <div class="card">
+                      <div class="job-search">
+                        <div class="card-body">
+                          <div class="media"><img class="img-40 img-fluid m-r-20" src="assets/images/job-search/6.jpg" alt="">
+                            <div class="media-body">
+                              <h6 class="f-w-700"><a href="javascript:void(0)">Designer, CRM</a><span class="pull-right">3 days ago</span></h6>
+                              <p>Citrix <span>Lelystad, Netherlands </span></p>
+                              <ul class="rating">
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star-o font-warning"></i></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p>Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-12">
+                    <div class="card">
+                      <div class="job-search">
+                        <div class="card-body">
+                          <div class="media"><img class="img-40 img-fluid m-r-20" src="assets/images/job-search/3.jpg" alt="">
+                            <div class="media-body">
+                              <h6 class="f-w-700"><a href="javascript:void(0)">Senior UX designer</a><span class="pull-right">5 days ago</span></h6>
+                              <p>Sutherland <span>Lelystad, Netherlands </span></p>
+                              <ul class="rating">
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star font-warning"></i></li>
+                                <li><i class="fa fa-star-o font-warning"></i></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p>Woody equal ask saw sir weeks aware decay. Entrance prospect removing we packages strictly is no smallest he. For hopes may chief get hours day rooms. Oh no turned behind polite piqued enough at. Forbade few through inquiry blushes you. Cousin no itself eldest it in dinner latter missed no.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
