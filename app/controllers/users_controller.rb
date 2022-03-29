@@ -62,11 +62,8 @@ class UsersController < ApplicationController
       render :create
     end
   end
-
-
   
   private
-
 
   def user_params
     if request.xhr?
