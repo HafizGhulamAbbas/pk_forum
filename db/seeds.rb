@@ -133,5 +133,5 @@ end
   )
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if (Rails.env.development? || Rails.env.production?)
 User.create!(email: 'abbas@gmail.com', password: 'Tr123456!', password_confirmation: 'Tr123456!', first_name: 'Ghulam', last_name: 'Abbas', gender: 'Male', phone: '051000000', city: 'Accra')
