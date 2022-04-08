@@ -100,10 +100,18 @@
     
                 <div class="form-group">
                 <ul class="login-social">
-                    <li><a href="https://www.linkedin.com/login" target="_blank"><i data-feather="linkedin"></i></a></li>
-                    <li><a href="https://www.linkedin.com/login" target="_blank"><i data-feather="twitter"></i></a></li>
-                    <li><a href="https://www.linkedin.com/login" target="_blank"><i data-feather="facebook"></i></a></li>
-                    <li><a href="https://www.instagram.com/login" target="_blank"><i data-feather="instagram"></i></a></li>
+                    <%= link_to user_facebook_omniauth_authorize_path do %>
+                      <i data-feather="facebook">
+                         Facebook Sign Up 
+                      </i>
+                      <% end %>
+
+                      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+                        <i data-feather="mail">
+                        Sign in with Google
+                        </i> 
+                      <% end %>
+                    
                 </ul>
                 </div>
 

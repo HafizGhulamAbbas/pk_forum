@@ -90,6 +90,7 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 # For registration via 3rd party
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 

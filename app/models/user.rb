@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   rolify
 
   has_many :likes, dependent: :destroy
@@ -50,23 +52,10 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(email: auth.info.email).first_or_create do |user|
-      user.email = auth.info.email
-      user.first_name = if auth.provider == 'twitter'
-                          auth.info.name
-                        else
-                          auth.info.first_name
-                        end
-      user.last_name = auth.info.last_name unless auth.provider == 'twitter'
-      user.provider = auth.provider
-      user.zipcode = '00000'
-      user.uid = auth.uid
-      user.device_type = 'web'
-
-      # TODO: Remove and add in before_create
-      user.advertising_id = '6a05a329-12a4-4b09-ab6c-2cece3b3803a'
-      user.udid = 'eAOnmT3xxn8:APA91bF7Ch4URpZexSQJ-cC1dlIhG6Aje89SnzJn1f3DlcMn2GJ7daYXCmv1S0ZQzm2iyuSJURDsjqFSA-VT33NFd-eFAujsq8d2bKzISsJ_nVWxSqe93asieD8MrZ91yP5mzeVh7Hv-d-EpYEceGsLC3soO2blZpg'
-    end
+    name_split = auth.info.name.split(" ")
+    user = User.where(email: auth.info.email).first
+    user ||= User.create!(provider: auth.provider, uid: auth.uid, last_name: name_split[0], first_name: name_split[1], email: auth.info.email, password: Devise.friendly_token[0, 20])
+      user
   end
   
   after_create :assign_default_role

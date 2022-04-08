@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   post 'posts/:id/likes', to: 'likes#create', as: 'like'
   delete 'likes/:id', to: 'likes#destroy', as: 'liked'
-  
+ get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
 
   resources :users, only: %i[index new create edit update]
   get 'users', to: 'users#index'
