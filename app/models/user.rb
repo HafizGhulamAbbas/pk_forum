@@ -14,8 +14,8 @@ class User < ApplicationRecord
 /x
 
   # has_secure_password validations: false
-  has_secure_password
-  devise :omniauthable, omniauth_providers: %i[facebook google_oauth2 twitter]
+  has_secure_password validations: false
+  devise :omniauthable , omniauth_providers: %i[facebook google_oauth2 twitter]
 
   enum device_type: %i[android ios web]
 

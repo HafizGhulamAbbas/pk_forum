@@ -32,4 +32,5 @@ class SessionsController < ApplicationController
 
   def coming_soon
   end
+
 end
